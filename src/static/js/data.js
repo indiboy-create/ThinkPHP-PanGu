@@ -405,7 +405,7 @@
       highlights: ['第三方登录', 'OAuth 流程', '适配 ThinkPHP 8'],
     },
     {
-      name: 'think-sms',
+      name: 'think-easysms',
       package: 'youvision/think-easysms',
       title: '短信发送',
       group: 'integration',
