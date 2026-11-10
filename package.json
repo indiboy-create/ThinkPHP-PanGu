@@ -1,13 +1,18 @@
 {
   "name": "@indiboy-create/thinkphp-pangu",
   "version": "1.0.0",
-  "private": true,
   "type": "module",
   "description": "PanGu · ThinkPHP 工程矩阵：面向 indiboy-create 开源项目的纯静态介绍站",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/indiboy-create/ThinkPHP-PanGu.git"
   },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "node scripts/build.mjs",

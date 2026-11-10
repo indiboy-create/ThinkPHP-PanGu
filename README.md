@@ -30,8 +30,9 @@
 .
 ├─ .github/
 │  └─ workflows/
-│     ├─ deploy.yml           # 推送 main：安装、lint、构建、校验、部署 Pages
-│     └─ verify.yml           # Pull Request：安装、lint、构建、校验
+│     ├─ deploy.yml           # 推送 main 或 v* 标签：安装、lint、构建、校验、部署 Pages
+│     ├─ verify.yml           # Pull Request：安装、lint、构建、校验
+│     └─ release.yml          # 推送 v* 标签：构建 dist、打包 zip、发布 Release 与 Packages
 ├─ .husky/
 │  ├─ pre-commit             # lint-staged
 │  └─ commit-msg             # commitlint
@@ -147,7 +148,7 @@ chore: 升级依赖
 
 1. 打开仓库 **Settings → Pages**
 2. 在 **Build and deployment → Source** 中选择 **GitHub Actions**
-3. 推送 `main` 分支，或在 Actions 中手动运行 **Deploy GitHub Pages**
+3. 推送 `main` 分支或 `v*` 标签，或在 Actions 中手动运行 **Deploy GitHub Pages**
 
 工作流步骤：
 
@@ -160,6 +161,50 @@ checkout → setup-node 22 → npm ci → npm run lint
 发布完成后访问：<https://indiboy-create.github.io/ThinkPHP-PanGu/>
 
 如果使用自定义域名，可在 **Settings → Pages → Custom domain** 中配置，GitHub 会生成 `CNAME`；同时更新 `src/static/js/data.js` 的 `site.url`、页面 canonical、`robots.txt` 与 sitemap 中的站点地址。
+
+## 发布版本（Git Tag）
+
+推送 `v*` 标签时会同时触发两套工作流：`Release Package` 重新构建 `dist`、打包 zip 并发布 GitHub Release 与 GitHub Packages；`Deploy GitHub Pages` 将该标签版本的 `dist` 发布到 Pages。
+
+版本号必须与 `package.json` 保持一致，不一致时工作流会直接终止。推荐流程：
+
+```bash
+npm version patch --no-git-tag-version
+git add package.json package-lock.json
+git commit -m "chore(release): v1.0.1"
+git tag v1.0.1
+git push origin main --follow-tags
+```
+
+> 不要直接使用 `npm version patch` 创建提交：它生成的提交信息是版本号，会被 commitlint 拒绝。
+
+标签推送后工作流执行：
+
+1. `npm ci`
+2. `npm run lint`
+3. 校验标签与 `package.json` 版本
+4. `npm run build`（重新生成 `dist`）
+5. `npm run check`
+6. 将 `dist` 打包为 `pangu-v1.0.1.zip`，解压即站点根目录
+7. 将 `dist` 发布到 GitHub Packages（npm 包 `@indiboy-create/thinkphp-pangu`）
+8. 创建或更新对应 Release，上传 zip 附件并生成发布说明
+9. 同时上传 Actions artifact `pangu-dist`
+
+> `Deploy GitHub Pages` 与 `Release Package` 会并行触发。Pages 部署的是该标签指向的提交；之后推送 `main` 会重新部署最新提交并覆盖 Pages 内容。
+
+### GitHub Packages
+
+`package.json` 通过 `files` 仅发布 `dist`，包名为 `@indiboy-create/thinkphp-pangu`，registry 为 `https://npm.pkg.github.com/`。
+
+安装前需配置 scope 并使用具备 `read:packages` 权限的 GitHub Token：
+
+```bash
+npm config set @indiboy-create:registry https://npm.pkg.github.com/
+npm login --scope=@indiboy-create --auth-type=legacy --registry=https://npm.pkg.github.com
+npm install @indiboy-create/thinkphp-pangu
+```
+
+GitHub Packages 不允许覆盖已发布版本，重新发布前需要提升 `package.json` 版本并重新打 tag。
 
 ## 子路径与 404
 
