@@ -22,7 +22,7 @@
 - **Node 构建脚本**：静态拷贝 `src → dist`，使用 Terser 压缩 JS、CleanCSS 压缩 CSS，第三方 Layui 原样保留
 - **代码规范**：ESLint（flat config）+ Prettier，忽略 Layui 第三方目录
 - **提交规范**：Husky + lint-staged + Commitlint（Conventional Commits）
-- **自动部署**：GitHub Actions 执行 `npm ci → lint → build → check → Pages`
+- **标签部署**：推送 `v*` 标签时由 GitHub Actions 构建并部署 Pages，普通提交不部署
 
 ## 目录结构
 
@@ -30,7 +30,7 @@
 .
 ├─ .github/
 │  └─ workflows/
-│     ├─ deploy.yml           # 推送 main 或 v* 标签：安装、lint、构建、校验、部署 Pages
+│     ├─ deploy.yml           # 推送 v* 标签：安装、lint、构建、校验、部署 Pages
 │     ├─ verify.yml           # Pull Request：安装、lint、构建、校验
 │     └─ release.yml          # 推送 v* 标签：构建 dist、打包 zip、发布 Release 与 Packages
 ├─ .husky/
@@ -148,7 +148,7 @@ chore: 升级依赖
 
 1. 打开仓库 **Settings → Pages**
 2. 在 **Build and deployment → Source** 中选择 **GitHub Actions**
-3. 推送 `main` 分支或 `v*` 标签，或在 Actions 中手动运行 **Deploy GitHub Pages**
+3. 推送 `v*` 标签，或在 Actions 中手动运行 **Deploy GitHub Pages**（普通提交不会触发 Pages 部署）
 
 工作流步骤：
 
@@ -190,7 +190,7 @@ git push origin main --follow-tags
 8. 创建或更新对应 Release，上传 zip 附件并生成发布说明
 9. 同时上传 Actions artifact `pangu-dist`
 
-> `Deploy GitHub Pages` 与 `Release Package` 会并行触发。Pages 部署的是该标签指向的提交；之后推送 `main` 会重新部署最新提交并覆盖 Pages 内容。
+> `Deploy GitHub Pages` 与 `Release Package` 会并行触发，Pages 部署的是该标签指向的提交；普通提交只执行校验，不会部署 Pages。
 
 ### GitHub Packages
 
