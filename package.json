@@ -1,0 +1,38 @@
+{
+  "name": "@indiboy-create/thinkphp-pangu",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "PanGu · ThinkPHP 工程矩阵：面向 indiboy-create 开源项目的纯静态介绍站",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/indiboy-create/ThinkPHP-PanGu.git"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "node scripts/build.mjs",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write \"src/**/*.{html,css,js}\"",
+    "check": "node scripts/check.mjs",
+    "sitemap": "node scripts/generate-sitemap.mjs",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^21.2.4",
+    "@commitlint/config-conventional": "^21.2.4",
+    "@eslint/js": "^9.39.0",
+    "clean-css": "^5.3.3",
+    "eslint": "^9.39.5",
+    "globals": "^17.14.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.6.0",
+    "prettier": "^3.9.10",
+    "terser": "^5.51.2",
+    "vite": "^8.3.5"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>项目 · PanGu</title>
+    <meta
+      name="description"
+      content="浏览 ThinkPHP 生态中的完整工程：应用商店套件、LayuiAdmin-Iframe 后台框架、glide-server 图片服务与独立探索项目。"
+    />
+    <link rel="canonical" href="https://indiboy-create.github.io/ThinkPHP-PanGu/projects.html" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="component/layui/css/layui.css" />
+    <link rel="stylesheet" href="static/css/site.css" />
+  </head>
+  <body data-page="projects">
+    <header class="pg-header">
+      <div class="pg-container pg-header-inner">
+        <a class="pg-brand" href="index.html">
+          <span class="pg-brand-mark"><i class="layui-icon layui-icon-engine"></i></span>
+          <span>PanGu<small>THINKPHP MATRIX</small></span>
+        </a>
+        <nav class="pg-nav">
+          <a href="index.html" data-page="home">首页</a>
+          <a href="packages.html" data-page="packages">组件矩阵</a>
+          <a href="projects.html" data-page="projects">项目</a>
+          <a href="about.html" data-page="about">关于</a>
+        </nav>
+        <div class="pg-header-actions">
+          <a class="pg-github-link" href="https://github.com/indiboy-create" target="_blank" rel="noopener">
+            <i class="layui-icon layui-icon-log"></i><span>GitHub</span>
+          </a>
+        </div>
+        <button class="pg-nav-toggle" type="button" aria-label="打开导航">
+          <i class="layui-icon layui-icon-spread-left"></i>
+        </button>
+      </div>
+    </header>
+
+    <main class="pg-main">
+      <section class="pg-page-head">
+        <div class="pg-container">
+          <div class="pg-breadcrumb">
+            <a href="index.html">首页</a><i class="layui-icon layui-icon-right"></i><span>项目</span>
+          </div>
+          <h1 class="pg-page-title">完整工程与独立服务</h1>
+          <p class="pg-page-desc">
+            这里收录不以单一 Composer 组件形态存在的项目：应用商店套件、iframe 后台框架、按需缩略图服务，
+            以及仍在探索中的站群与 MCP 音乐服务。
+          </p>
+        </div>
+      </section>
+
+      <section class="pg-section is-tight">
+        <div class="pg-container" id="projects-list"></div>
+      </section>
+
+      <section class="pg-section is-tight">
+        <div class="pg-container">
+          <div class="pg-cta">
+            <div class="pg-cta-text">
+              <h2>项目之间可以自由组合</h2>
+              <p>
+                例如用 LayuiAdmin-Iframe 做后台界面，用 think-store 管理发布包，用 glide-server
+                处理缩略图，再通过 Composer 组件补齐认证、导出与通知能力。
+              </p>
+            </div>
+            <div class="pg-cta-actions">
+              <a class="pg-btn pg-btn-primary" href="packages.html">浏览组件</a>
+              <a class="pg-btn pg-btn-ghost" href="index.html">回到首页</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="pg-footer">
+      <div class="pg-container">
+        <div class="pg-footer-grid">
+          <div>
+            <a class="pg-brand" href="index.html">
+              <span class="pg-brand-mark"><i class="layui-icon layui-icon-engine"></i></span>
+              <span>PanGu<small>THINKPHP MATRIX</small></span>
+            </a>
+            <p class="pg-footer-desc">
+              面向 ThinkPHP 8 的开源工程索引：组件、框架、服务与发布工具，按能力组织，持续整理。
+            </p>
+          </div>
+          <div>
+            <h4>组件分类</h4>
+            <div class="pg-footer-links">
+              <a href="packages.html?group=foundation">基础架构</a>
+              <a href="packages.html?group=security">安全认证</a>
+              <a href="packages.html?group=data">数据处理</a>
+              <a href="packages.html?group=media">媒体文件</a>
+              <a href="packages.html?group=integration">开放集成</a>
+            </div>
+          </div>
+          <div>
+            <h4>项目</h4>
+            <div class="pg-footer-links">
+              <a href="project.html?slug=think-store">think-store</a>
+              <a href="project.html?slug=think-static">think-static</a>
+              <a href="project.html?slug=layuiadmin-iframe">LayuiAdmin-Iframe</a>
+              <a href="project.html?slug=glide-server">glide-server</a>
+              <a href="projects.html">全部项目</a>
+            </div>
+          </div>
+          <div>
+            <h4>资源</h4>
+            <div class="pg-footer-links">
+              <a href="packages.html">组件矩阵</a>
+              <a href="about.html">关于本站</a>
+              <a href="https://github.com/indiboy-create" target="_blank" rel="noopener">GitHub 主页</a>
+              <a href="https://layui.dev/" target="_blank" rel="noopener">Layui 文档</a>
+              <a href="https://www.thinkphp.cn/" target="_blank" rel="noopener">ThinkPHP 官网</a>
+            </div>
+          </div>
+        </div>
+        <div class="pg-footer-bottom">
+          <span>© <span id="pg-year">2026</span> PanGu · ThinkPHP 工程矩阵</span>
+          <span>Built with Layui 2.13.9 · 纯静态部署</span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="component/layui/layui.js"></script>
+    <script src="static/js/data.js"></script>
+    <script src="static/js/site.js"></script>
+  </body>
+</html>

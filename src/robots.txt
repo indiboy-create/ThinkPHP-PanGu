@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://indiboy-create.github.io/ThinkPHP-PanGu/sitemap.xml

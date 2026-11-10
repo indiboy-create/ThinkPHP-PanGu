@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>页面不存在 · PanGu</title>
+    <meta name="robots" content="noindex" />
+    <script>
+      (function () {
+        var repo = 'ThinkPHP-PanGu';
+        var base = './';
+        if (window.location.protocol === 'http:' || window.location.protocol === 'https:') {
+          var marker = '/' + repo + '/';
+          var index = window.location.pathname.indexOf(marker);
+          base = index >= 0 ? window.location.pathname.slice(0, index + marker.length) : '/';
+        }
+        document.write('<base href="' + base + '">');
+      })();
+    </script>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="component/layui/css/layui.css" />
+    <link rel="stylesheet" href="static/css/site.css" />
+  </head>
+  <body data-page="">
+    <header class="pg-header">
+      <div class="pg-container pg-header-inner">
+        <a class="pg-brand" href="index.html">
+          <span class="pg-brand-mark"><i class="layui-icon layui-icon-engine"></i></span>
+          <span>PanGu<small>THINKPHP MATRIX</small></span>
+        </a>
+        <nav class="pg-nav">
+          <a href="index.html" data-page="home">首页</a>
+          <a href="packages.html" data-page="packages">组件矩阵</a>
+          <a href="projects.html" data-page="projects">项目</a>
+          <a href="about.html" data-page="about">关于</a>
+        </nav>
+        <div class="pg-header-actions">
+          <a class="pg-github-link" href="https://github.com/indiboy-create" target="_blank" rel="noopener">
+            <i class="layui-icon layui-icon-log"></i><span>GitHub</span>
+          </a>
+        </div>
+        <button class="pg-nav-toggle" type="button" aria-label="打开导航">
+          <i class="layui-icon layui-icon-spread-left"></i>
+        </button>
+      </div>
+    </header>
+
+    <main class="pg-main">
+      <section class="pg-section">
+        <div class="pg-container">
+          <div class="pg-empty" style="padding: 100px 20px">
+            <i class="layui-icon layui-icon-face-surprised"></i>
+            <h3 style="font-size: 24px">404 · 页面不存在</h3>
+            <p>地址可能已经变化，或者这个页面从未存在。</p>
+            <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap">
+              <a class="pg-btn pg-btn-primary" href="index.html">回到首页</a>
+              <a class="pg-btn pg-btn-outline" href="packages.html">浏览组件</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="pg-footer">
+      <div class="pg-container">
+        <div class="pg-footer-bottom" style="border: none; padding-top: 0">
+          <span>© <span id="pg-year">2026</span> PanGu · ThinkPHP 工程矩阵</span>
+          <span>Built with Layui 2.13.9 · 纯静态部署</span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="component/layui/layui.js"></script>
+    <script src="static/js/data.js"></script>
+    <script src="static/js/site.js"></script>
+  </body>
+</html>
