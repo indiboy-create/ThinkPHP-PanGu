@@ -53,9 +53,9 @@ jobs:
     name: Deploy
     needs: build
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+    # 不声明 environment：github-pages 环境的自定义部署分支策略只放行分支，
+    # 标签触发会被保护规则拦截（Tag is not allowed to deploy to github-pages）。
+    # 去掉环境引用后，部署闸门由工作流的 v* 标签触发条件承担。
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
