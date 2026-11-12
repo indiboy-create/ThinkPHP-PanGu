@@ -1,6 +1,6 @@
 {
   "name": "@indiboy-create/thinkphp-pangu",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "type": "module",
   "description": "PanGu · ThinkPHP 工程矩阵：面向 indiboy-create 开源项目的纯静态介绍站",
   "repository": {
