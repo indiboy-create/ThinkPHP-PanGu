@@ -7,7 +7,7 @@ export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '
 export const SRC_DIR = path.join(ROOT, 'src');
 export const DIST_DIR = path.join(ROOT, 'dist');
 
-export const STATIC_PAGES = ['index.html', 'packages.html', 'projects.html', 'about.html'];
+export const STATIC_PAGES = ['index.html', 'store.html', 'packages.html', 'projects.html', 'about.html'];
 export const ALL_PAGES = STATIC_PAGES.concat(['package.html', 'project.html', '404.html']);
 
 export function loadSiteData() {

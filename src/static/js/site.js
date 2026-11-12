@@ -864,6 +864,136 @@
       '</div></div>';
   }
 
+  function initStorePage() {
+    var suiteBox = $('#store-suite');
+    var pkgBox = $('#store-packages');
+    var endpointBox = $('#store-endpoints');
+    if (!suiteBox && !pkgBox && !endpointBox) return;
+
+    var storeProjects = DATA.projects.filter(function (project) {
+      return project.category === '应用商店' || project.category === '部署工具';
+    });
+
+    if (suiteBox) {
+      suiteBox.innerHTML = storeProjects
+        .map(function (project, index) {
+          return (
+            '<a class="pg-project pg-fade pg-delay-' +
+            ((index % 4) + 1) +
+            '" href="' +
+            projectHref(project) +
+            '">' +
+            '<div class="pg-project-icon"><i class="layui-icon ' +
+            project.icon +
+            '"></i></div>' +
+            '<div>' +
+            '<h3>' +
+            esc(project.name) +
+            '<span class="pg-badge">' +
+            esc(project.badge) +
+            '</span></h3>' +
+            '<p>' +
+            esc(project.summary) +
+            '</p>' +
+            '<div class="pg-project-meta">' +
+            '<span class="pg-tag">' +
+            esc(project.category) +
+            '</span>' +
+            project.stack
+              .slice(0, 3)
+              .map(function (tech) {
+                return '<span class="pg-tag">' + esc(tech) + '</span>';
+              })
+              .join('') +
+            '</div></div>' +
+            '<div class="pg-project-arrow"><i class="layui-icon layui-icon-right"></i></div>' +
+            '</a>'
+          );
+        })
+        .join('');
+    }
+
+    if (pkgBox) {
+      var storePkgs = DATA.packages.filter(function (pkg) {
+        return pkg.group === 'store';
+      });
+
+      pkgBox.innerHTML = storePkgs
+        .map(function (pkg, index) {
+          var group = groupOf(pkg.group);
+          return (
+            '<a class="pg-pkg pg-fade pg-delay-' +
+            ((index % 4) + 1) +
+            '" href="' +
+            packageHref(pkg) +
+            '">' +
+            '<div class="pg-pkg-top">' +
+            '<div class="pg-pkg-name">' +
+            esc(pkg.name) +
+            '</div>' +
+            '<div class="pg-pkg-title">' +
+            esc(pkg.title) +
+            '</div>' +
+            '</div>' +
+            '<p class="pg-pkg-desc">' +
+            esc(pkg.summary) +
+            '</p>' +
+            '<div class="pg-pkg-tags">' +
+            pkgTags(pkg.tags) +
+            '</div>' +
+            '<div class="pg-pkg-foot"><span style="color:' +
+            group.color +
+            '">' +
+            esc(group.name) +
+            '</span><span>' +
+            esc(pkg.package) +
+            '</span></div>' +
+            '</a>'
+          );
+        })
+        .join('');
+    }
+
+    if (endpointBox) {
+      var rows = [];
+      storeProjects.forEach(function (project) {
+        (project.endpoints || []).forEach(function (endpoint) {
+          rows.push({ project: project, endpoint: endpoint });
+        });
+      });
+
+      endpointBox.innerHTML =
+        '<h2 class="pg-panel-title"><i class="layui-icon layui-icon-link"></i>路由清单</h2>' +
+        (rows.length
+          ? '<table class="pg-endpoints"><thead><tr><th style="width:78px">方法</th><th style="width:190px">地址</th>' +
+            '<th style="width:170px">所属发布包</th><th>说明</th></tr></thead><tbody>' +
+            rows
+              .map(function (row) {
+                return (
+                  '<tr><td><span class="pg-method' +
+                  (row.endpoint.method === 'POST' ? ' is-post' : '') +
+                  '">' +
+                  esc(row.endpoint.method) +
+                  '</span></td>' +
+                  '<td><code>' +
+                  esc(row.endpoint.path) +
+                  '</code></td>' +
+                  '<td><a href="' +
+                  projectHref(row.project) +
+                  '">' +
+                  esc(row.project.name) +
+                  '</a></td>' +
+                  '<td>' +
+                  esc(row.endpoint.desc) +
+                  '</td></tr>'
+                );
+              })
+              .join('') +
+            '</tbody></table>'
+          : '<div class="pg-prose"><p>当前发布包没有对外公开的路由。</p></div>');
+    }
+  }
+
   function initProjectDetail() {
     var root = $('#project-detail');
     if (!root) return;
@@ -1103,6 +1233,7 @@
     initPackagesPage();
     initPackageDetail();
     initProjectsPage();
+    initStorePage();
     initProjectDetail();
 
     if (window.layui && layui.use) {

@@ -43,6 +43,7 @@
 │  └─ generate-sitemap.mjs   # 仅生成 dist/sitemap.xml
 ├─ src/                      # 源码
 │  ├─ index.html             # 首页
+│  ├─ store.html             # 应用商店（发布链路、商店套件、商店组件与接口）
 │  ├─ packages.html          # 组件矩阵（搜索、分类筛选、排序、分页）
 │  ├─ package.html           # 组件详情（?name=think-jwt）
 │  ├─ projects.html          # 项目列表
@@ -219,7 +220,7 @@ GitHub Pages 项目站点位于 `/ThinkPHP-PanGu/` 子路径：
 1. `src/static/js/data.js` 中的 `site.url`
 2. `src/404.html` 中的 `repo` 常量
 3. `src/robots.txt` 中的 sitemap 地址
-4. 各页面 `<link rel="canonical">`（`index.html`、`packages.html`、`package.html`、`projects.html`、`project.html`、`about.html`）
+4. 各页面 `<link rel="canonical">`（`index.html`、`store.html`、`packages.html`、`package.html`、`projects.html`、`project.html`、`about.html`）
 
 ## 数据维护
 
@@ -244,6 +245,7 @@ npm run check
 | 页面 | 说明 |
 | --- | --- |
 | `index.html` | 首页：生态入口、应用商店发布链路、能力分类、精选组件、项目预览 |
+| `store.html` | 应用商店：商店套件概览、发布链路四步、商店组件与发布包接口清单 |
 | `packages.html` | 组件矩阵：关键词搜索、分类筛选、名称/分类排序、每页 12 条分页 |
 | `package.html` | 组件详情：安装命令、核心能力、标签、同分类推荐、GitHub 链接 |
 | `projects.html` | 项目列表：应用商店套件与独立项目分组 |

@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>应用商店 · PanGu</title>
+    <meta
+      name="description"
+      content="ThinkPHP 8 应用商店套件：think-static 负责静态资源自动部署，think-store 负责发布包查询与同步，think-store-example 与 think-store-codeditor 是可安装的发布包示例。"
+    />
+    <meta property="og:title" content="应用商店 · PanGu" />
+    <meta
+      property="og:description"
+      content="Composer 驱动的站点发布链路：声明 project.json、安装发布包、自动部署静态资源、可视化管理发布包。"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://indiboy-create.github.io/ThinkPHP-PanGu/store.html" />
+    <link rel="canonical" href="https://indiboy-create.github.io/ThinkPHP-PanGu/store.html" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="component/layui/css/layui.css" />
+    <link rel="stylesheet" href="static/css/site.css" />
+  </head>
+  <body data-page="store">
+    <header class="pg-header">
+      <div class="pg-container pg-header-inner">
+        <a class="pg-brand" href="index.html">
+          <span class="pg-brand-mark"><i class="layui-icon layui-icon-engine"></i></span>
+          <span>PanGu<small>THINKPHP MATRIX</small></span>
+        </a>
+        <nav class="pg-nav">
+          <a href="index.html" data-page="home">首页</a>
+          <a href="store.html" data-page="store">应用商店</a>
+          <a href="packages.html" data-page="packages">组件矩阵</a>
+          <a href="projects.html" data-page="projects">项目</a>
+          <a href="about.html" data-page="about">关于</a>
+        </nav>
+        <div class="pg-header-actions">
+          <a class="pg-github-link" href="https://github.com/indiboy-create" target="_blank" rel="noopener">
+            <i class="layui-icon layui-icon-log"></i><span>GitHub</span>
+          </a>
+        </div>
+        <button class="pg-nav-toggle" type="button" aria-label="打开导航">
+          <i class="layui-icon layui-icon-spread-left"></i>
+        </button>
+      </div>
+    </header>
+
+    <main class="pg-main">
+      <section class="pg-page-head">
+        <div class="pg-container">
+          <div class="pg-breadcrumb">
+            <a href="index.html">首页</a><i class="layui-icon layui-icon-right"></i><span>应用商店</span>
+          </div>
+          <h1 class="pg-page-title">ThinkPHP 8 应用商店</h1>
+          <p class="pg-page-desc">
+            商店体系由 think-static、think-store 与两个发布包示例组成：Composer 安装即完成静态资源部署，
+            think-store 负责查询、同步与可视化管理，业务站点因此可以像装插件一样装站点。
+          </p>
+        </div>
+      </section>
+
+      <section class="pg-section is-tight">
+        <div class="pg-container">
+          <div class="pg-section-head">
+            <div>
+              <div class="pg-eyebrow">Store Suite</div>
+              <h2 class="pg-section-title">商店套件一览</h2>
+              <p class="pg-section-desc">
+                部署底座、商店中枢与两个可直接安装的发布包，四个仓库各司其职，拼成一条完整链路。
+              </p>
+            </div>
+            <a class="pg-section-link" href="projects.html"
+              >全部项目 <i class="layui-icon layui-icon-right"></i
+            ></a>
+          </div>
+          <div class="pg-project-list" id="store-suite"></div>
+        </div>
+      </section>
+
+      <section class="pg-band pg-section">
+        <div class="pg-container pg-band-inner">
+          <div class="pg-section-head">
+            <div>
+              <div class="pg-eyebrow">Store Pipeline</div>
+              <h2 class="pg-section-title">一套 Composer 驱动的站点发布链路</h2>
+              <p class="pg-section-desc">
+                声明部署清单、安装发布包、自动复制静态资源、在管理页统一同步，四个环节各由一个仓库承担。
+              </p>
+            </div>
+            <a class="pg-section-link" style="color: #7fe6da" href="project.html?slug=think-store"
+              >了解 think-store <i class="layui-icon layui-icon-right"></i
+            ></a>
+          </div>
+          <div class="pg-flow">
+            <div class="pg-flow-step">
+              <h4>声明 project.json</h4>
+              <p>在发布包内定义部署路径、映射与排除规则。</p>
+              <code>"path": "store-example"</code>
+            </div>
+            <div class="pg-flow-step">
+              <h4>Composer 安装</h4>
+              <p>允许 think-static 插件后安装发布包，服务自动注册。</p>
+              <code>composer require youvision/think-store-example</code>
+            </div>
+            <div class="pg-flow-step">
+              <h4>自动部署</h4>
+              <p>dump-autoload 触发部署，静态资源落到 public/store。</p>
+              <code>public/store/store-example</code>
+            </div>
+            <div class="pg-flow-step">
+              <h4>可视化管理</h4>
+              <p>think-store 管理首页查询发布包并重新同步。</p>
+              <code>/store/think-store/index.html</code>
+            </div>
+          </div>
+          <div class="pg-band-actions">
+            <a class="pg-btn pg-btn-primary" href="project.html?slug=think-static">部署工具 think-static</a>
+            <a class="pg-btn pg-btn-ghost" href="project.html?slug=think-store-example">示例发布包</a>
+            <a class="pg-btn pg-btn-ghost" href="project.html?slug=think-store-codeditor">在线代码编辑器</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="pg-section">
+        <div class="pg-container">
+          <div class="pg-section-head">
+            <div>
+              <div class="pg-eyebrow">Store Packages</div>
+              <h2 class="pg-section-title">商店相关的 Composer 组件</h2>
+              <p class="pg-section-desc">
+                四个包共同覆盖部署、管理与发布包运行，安装方式统一为 composer require。
+              </p>
+            </div>
+            <a class="pg-section-link" href="packages.html?group=store"
+              >在组件矩阵中查看 <i class="layui-icon layui-icon-right"></i
+            ></a>
+          </div>
+          <div class="pg-grid pg-grid-2" id="store-packages"></div>
+        </div>
+      </section>
+
+      <section class="pg-section is-tight">
+        <div class="pg-container">
+          <div class="pg-section-head">
+            <div>
+              <div class="pg-eyebrow">Endpoints</div>
+              <h2 class="pg-section-title">发布包对外接口</h2>
+              <p class="pg-section-desc">
+                商店管理、示例站点与在线编辑器各自暴露的路由，安装后即可在主项目中直接调用。
+              </p>
+            </div>
+          </div>
+          <div class="pg-panel" id="store-endpoints"></div>
+        </div>
+      </section>
+
+      <section class="pg-section is-tight">
+        <div class="pg-container">
+          <div class="pg-cta">
+            <div class="pg-cta-text">
+              <h2>把你的站点也做成发布包</h2>
+              <p>
+                按 think-store-example 的目录结构准备 project 目录与 project.json， 声明 path、map 与
+                exclude，Composer 安装后站点就会出现在商店里。
+              </p>
+            </div>
+            <div class="pg-cta-actions">
+              <a class="pg-btn pg-btn-primary" href="packages.html?group=store">查看商店组件</a>
+              <a class="pg-btn pg-btn-ghost" href="projects.html">看看完整项目</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="pg-footer">
+      <div class="pg-container">
+        <div class="pg-footer-grid">
+          <div>
+            <a class="pg-brand" href="index.html">
+              <span class="pg-brand-mark"><i class="layui-icon layui-icon-engine"></i></span>
+              <span>PanGu<small>THINKPHP MATRIX</small></span>
+            </a>
+            <p class="pg-footer-desc">
+              面向 ThinkPHP 8 的开源工程索引：组件、框架、服务与发布工具，按能力组织，持续整理。
+            </p>
+          </div>
+          <div>
+            <h4>组件分类</h4>
+            <div class="pg-footer-links">
+              <a href="packages.html?group=foundation">基础架构</a>
+              <a href="packages.html?group=security">安全认证</a>
+              <a href="packages.html?group=data">数据处理</a>
+              <a href="packages.html?group=media">媒体文件</a>
+              <a href="packages.html?group=integration">开放集成</a>
+            </div>
+          </div>
+          <div>
+            <h4>项目</h4>
+            <div class="pg-footer-links">
+              <a href="project.html?slug=think-store">think-store</a>
+              <a href="project.html?slug=think-static">think-static</a>
+              <a href="project.html?slug=layuiadmin-iframe">LayuiAdmin-Iframe</a>
+              <a href="project.html?slug=glide-server">glide-server</a>
+              <a href="projects.html">全部项目</a>
+            </div>
+          </div>
+          <div>
+            <h4>资源</h4>
+            <div class="pg-footer-links">
+              <a href="packages.html">组件矩阵</a>
+              <a href="about.html">关于本站</a>
+              <a href="https://github.com/indiboy-create" target="_blank" rel="noopener">GitHub 主页</a>
+              <a href="https://layui.dev/" target="_blank" rel="noopener">Layui 文档</a>
+              <a href="https://www.thinkphp.cn/" target="_blank" rel="noopener">ThinkPHP 官网</a>
+            </div>
+          </div>
+        </div>
+        <div class="pg-footer-bottom">
+          <span>© <span id="pg-year">2026</span> PanGu · ThinkPHP 工程矩阵</span>
+          <span>Built with Layui 2.13.9 · 纯静态部署</span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="component/layui/layui.js"></script>
+    <script src="static/js/data.js"></script>
+    <script src="static/js/site.js"></script>
+  </body>
+</html>
