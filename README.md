@@ -55,7 +55,7 @@
 │  ├─ favicon.svg
 │  ├─ robots.txt
 │  ├─ component/
-│  │  └─ layui/              # Layui 2.13.9 发布包（构建时原样保留）
+│  │  └─ layui/              # Layui 发布包（构建时原样保留）
 │  └─ static/
 │     ├─ css/site.css
 │     ├─ js/data.js          # 组件、分类、项目数据
@@ -261,4 +261,4 @@ npm run check
 - 只有名称、没有实质说明的仓库（如 think-firewall、think-uploader 等）未收录为成熟组件，避免夸大能力。
 - `think-sms` 的 Composer 包名为 `youvision/think-easysms`，页面中已显式标注。
 
-- Layui 静态资源位于 `src/component/layui`，版本为 2.13.9，构建时原样复制到 `dist`。- 页面优先复用 Layui 组件：`layui-container`、`layui-row/layui-col`、`layui-card`、`layui-btn`、`layui-badge`、`layui-form`、`layui-table`、`layui-panel`；`site.css` 只保留主题变量、品牌配色与必要的组件覆盖。
+- Layui 静态资源位于 `src/component/layui`，构建时原样复制到 `dist`。- 页面优先复用 Layui 组件：`layui-container`、`layui-row/layui-col`、`layui-card`、`layui-btn`、`layui-badge`、`layui-form`、`layui-table`、`layui-panel`；`site.css` 只保留主题变量、品牌配色与必要的组件覆盖。
