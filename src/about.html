@@ -6,7 +6,7 @@
     <title>关于 · PanGu</title>
     <meta
       name="description"
-      content="PanGu 是一个纯静态的 ThinkPHP 开源工程索引，整理 indiboy-create 的 Composer 组件、框架与服务项目。"
+      content="PanGu 是什么、为什么存在、如何组织：面向 ThinkPHP 8 的开源工程索引，纯静态、可验证、可持续维护。"
     />
     <link rel="canonical" href="https://indiboy-create.github.io/ThinkPHP-PanGu/about.html" />
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
@@ -15,7 +15,7 @@
   </head>
   <body data-page="about">
     <header class="pg-header">
-      <div class="pg-container pg-header-inner">
+      <div class="layui-container pg-header-inner">
         <a class="pg-brand" href="index.html">
           <span class="pg-brand-mark"><i class="layui-icon layui-icon-engine"></i></span>
           <span>PanGu<small>THINKPHP MATRIX</small></span>
@@ -24,6 +24,7 @@
           <a href="index.html" data-page="home">首页</a>
           <a href="store.html" data-page="store">应用商店</a>
           <a href="packages.html" data-page="packages">组件矩阵</a>
+          <a href="join.html" data-page="join">加入我们</a>
           <a href="projects.html" data-page="projects">项目</a>
           <a href="about.html" data-page="about">关于</a>
         </nav>
@@ -40,175 +41,215 @@
 
     <main class="pg-main">
       <section class="pg-page-head">
-        <div class="pg-container">
-          <div class="pg-breadcrumb">
-            <a href="index.html">首页</a><i class="layui-icon layui-icon-right"></i><span>关于</span>
-          </div>
-          <h1 class="pg-page-title">关于 PanGu</h1>
+        <div class="layui-container">
+          <span class="pg-hero-badge pg-fade">
+            <i class="layui-icon layui-icon-fire"></i>
+            ThinkPHP 8 工程矩阵 · 51 个组件 · 8 类能力
+          </span>
+          <h1 class="pg-page-title">关于 <em>PanGu</em></h1>
           <p class="pg-page-desc">
-            PanGu 是这套 ThinkPHP 工程矩阵的索引站。它本身是纯静态页面，使用 Layui 2.13.9 构建， 不依赖 PHP
-            运行时、数据库或前端构建工具，克隆后即可直接部署。
+            PanGu 不是框架，而是一张索引：把散落在 GitHub
+            上的组件、模板、服务与发布包，按“能装、能跑、能看懂”整理到一起。
           </p>
         </div>
       </section>
 
       <section class="pg-section is-tight">
-        <div class="pg-container">
+        <div class="layui-container">
           <div class="pg-section-head">
             <div>
               <div class="pg-eyebrow">Structure</div>
               <h2 class="pg-section-title">仓库如何组织</h2>
-              <p class="pg-section-desc">按交付形态分成四类，而不是简单按名称堆在一起。</p>
+              <p class="pg-section-desc">
+                按交付形态分成六类：Composer 组件、前端模板、独立服务、商店发布包、文档界面与探索项目。
+              </p>
             </div>
           </div>
-          <div class="pg-grid pg-grid-2">
-            <div class="pg-card">
-              <div class="pg-card-icon"><i class="layui-icon layui-icon-component"></i></div>
-              <h3 class="pg-card-title">think-* Composer 组件</h3>
-              <p class="pg-card-text">
-                以 youvision/think-* 包名发布，通过 composer require 引入 ThinkPHP 8
-                项目，覆盖基础架构、安全认证、数据处理、媒体文件、开放集成与开发体验。
-              </p>
+          <div class="layui-row layui-col-space20">
+            <div class="layui-col-md6">
+              <div class="layui-card pg-card">
+                <div class="pg-card-icon"><i class="layui-icon layui-icon-component"></i></div>
+                <h3 class="pg-card-title">think-* Composer 组件</h3>
+                <p class="pg-card-text">
+                  51 个以 youvision/think-* 发布的 Composer
+                  包，覆盖从插件骨架到认证、支付、短信与后台组件的常见需求。
+                </p>
+              </div>
             </div>
-            <div class="pg-card">
-              <div class="pg-card-icon"><i class="layui-icon layui-icon-desktop"></i></div>
-              <h3 class="pg-card-title">LayuiAdmin-Iframe</h3>
-              <p class="pg-card-text">
-                独立的前端后台模板，原生 HTML + CSS + JavaScript，采用 Layui AMD 模块体系，提供 Vite
-                开发服务器与静态构建脚本。
-              </p>
+            <div class="layui-col-md6">
+              <div class="layui-card pg-card">
+                <div class="pg-card-icon"><i class="layui-icon layui-icon-desktop"></i></div>
+                <h3 class="pg-card-title">LayuiAdmin-Iframe</h3>
+                <p class="pg-card-text">
+                  原生 HTML + CSS + JavaScript 的 iframe 后台模板，沿用 Layui AMD 模块体系，并带 Vite
+                  开发服务器与静态构建脚本。
+                </p>
+              </div>
             </div>
-            <div class="pg-card">
-              <div class="pg-card-icon"><i class="layui-icon layui-icon-picture"></i></div>
-              <h3 class="pg-card-title">glide-server</h3>
-              <p class="pg-card-text">
-                独立部署的按需缩略图服务，URL 参数驱动裁剪缩放，首次访问生成并缓存，不依赖 ThinkPHP 框架。
-              </p>
+            <div class="layui-col-md6">
+              <div class="layui-card pg-card">
+                <div class="pg-card-icon"><i class="layui-icon layui-icon-picture"></i></div>
+                <h3 class="pg-card-title">glide-server</h3>
+                <p class="pg-card-text">
+                  URL 参数驱动的按需缩略图服务，首次访问时生成并缓存，可脱离 ThinkPHP 独立部署。
+                </p>
+              </div>
             </div>
-            <div class="pg-card">
-              <div class="pg-card-icon"><i class="layui-icon layui-icon-cart"></i></div>
-              <h3 class="pg-card-title">应用商店套件</h3>
-              <p class="pg-card-text">
-                think-static 负责 Composer 自动部署，think-store 负责发布包查询与同步，think-store-example 与
-                think-store-codeditor 是可直接安装的发布包实例。
-              </p>
+            <div class="layui-col-md6">
+              <div class="layui-card pg-card">
+                <div class="pg-card-icon"><i class="layui-icon layui-icon-cart"></i></div>
+                <h3 class="pg-card-title">应用商店套件</h3>
+                <p class="pg-card-text">
+                  think-store 负责发布包查询、同步与静态资源部署；示例、编辑器、象棋与天气是可安装的发布包。
+                </p>
+              </div>
+            </div>
+            <div class="layui-col-md6">
+              <div class="layui-card pg-card">
+                <div class="pg-card-icon"><i class="layui-icon layui-icon-file"></i></div>
+                <h3 class="pg-card-title">think-apidoc-ui</h3>
+                <p class="pg-card-text">
+                  Layui 版 ApiDoc 前端界面，纯静态资源，放入 public/apidoc 并改一处 config.js 即可使用。
+                </p>
+              </div>
+            </div>
+            <div class="layui-col-md6">
+              <div class="layui-card pg-card">
+                <div class="pg-card-icon"><i class="layui-icon layui-icon-location"></i></div>
+                <h3 class="pg-card-title">探索项目</h3>
+                <p class="pg-card-text">
+                  tpcms-sites 是仍在演进的站群系统；xiaozhi-music 是面向小智 AI 的 Meting 音乐 MCP 服务。
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       <section class="pg-section is-tight">
-        <div class="pg-container">
+        <div class="layui-container">
           <div class="pg-section-head">
             <div>
               <div class="pg-eyebrow">Conventions</div>
               <h2 class="pg-section-title">本站的整理原则</h2>
-              <p class="pg-section-desc">尽量让信息可验证、可操作，不替仓库编造不存在的能力。</p>
+              <p class="pg-section-desc">可验证、可操作、不过度包装：页面上的每个结论都能回到源仓库。</p>
             </div>
           </div>
-          <div class="pg-about-grid">
-            <div class="pg-about-card">
-              <i class="layui-icon layui-icon-survey"></i>
-              <h3>以 README 为准</h3>
-              <p>
-                组件介绍、接口与配置项优先取自仓库 README 与
-                composer.json；只有名称、没有说明的仓库不强行包装成成熟组件。
-              </p>
+          <div class="layui-row layui-col-space20">
+            <div class="layui-col-md4">
+              <div class="layui-card pg-about-card">
+                <i class="layui-icon layui-icon-survey"></i>
+                <h3>以 README 为准</h3>
+                <p>说明与接口优先取自 README 与 composer.json；只有名称、没有实质说明的仓库不收录。</p>
+              </div>
             </div>
-            <div class="pg-about-card">
-              <i class="layui-icon layui-icon-set"></i>
-              <h3>区分组件与工程</h3>
-              <p>Composer 包、前端模板、独立服务与发布包分别展示，避免把不同交付形态混在同一套安装说明里。</p>
+            <div class="layui-col-md4">
+              <div class="layui-card pg-about-card">
+                <i class="layui-icon layui-icon-set"></i>
+                <h3>区分组件与工程</h3>
+                <p>Composer 包、前端模板、独立服务与发布包分开呈现，不把不同交付形态混在同一套安装说明里。</p>
+              </div>
             </div>
-            <div class="pg-about-card">
-              <i class="layui-icon layui-icon-templeate-1"></i>
-              <h3>纯静态交付</h3>
-              <p>
-                所有页面都是静态 HTML，数据集中维护在 data.js，可直接托管到 GitHub Pages、对象存储或任意 Web
-                服务器。
-              </p>
+            <div class="layui-col-md4">
+              <div class="layui-card pg-about-card">
+                <i class="layui-icon layui-icon-templeate-1"></i>
+                <h3>纯静态交付</h3>
+                <p>页面为静态 HTML，数据集中在 data.js，可托管到 GitHub Pages、对象存储或任意静态服务器。</p>
+              </div>
             </div>
-            <div class="pg-about-card">
-              <i class="layui-icon layui-icon-log"></i>
-              <h3>指向源仓库</h3>
-              <p>每个组件与项目都提供 GitHub 链接，版本、更新记录与问题讨论以源仓库为准。</p>
+            <div class="layui-col-md4">
+              <div class="layui-card pg-about-card">
+                <i class="layui-icon layui-icon-log"></i>
+                <h3>指向源仓库</h3>
+                <p>每个组件与项目都提供 GitHub 链接，版本、更新记录与问题讨论以源仓库为准。</p>
+              </div>
             </div>
-            <div class="pg-about-card">
-              <i class="layui-icon layui-icon-chrome"></i>
-              <h3>环境基线</h3>
-              <p>
-                组件基线为 PHP >= 8.0 与 ThinkPHP 8；glide-server 要求 PHP >= 8.3，并需要 nginx 或 Apache
-                做请求转发。
-              </p>
+            <div class="layui-col-md4">
+              <div class="layui-card pg-about-card">
+                <i class="layui-icon layui-icon-chrome"></i>
+                <h3>环境基线</h3>
+                <p>
+                  组件基线为 PHP 8+ 与 ThinkPHP 8；glide-server 要求 PHP 8.3+，并由 nginx 或 Apache 转发请求。
+                </p>
+              </div>
             </div>
-            <div class="pg-about-card">
-              <i class="layui-icon layui-icon-vercode"></i>
-              <h3>安全提示</h3>
-              <p>
-                涉及模板编辑、数据库备份、支付与后台接口的组件，应在生产环境配置鉴权中间件、路径白名单与访问频率限制。
-              </p>
+            <div class="layui-col-md4">
+              <div class="layui-card pg-about-card">
+                <i class="layui-icon layui-icon-vercode"></i>
+                <h3>安全提示</h3>
+                <p>
+                  模板编辑、数据库备份、支付与后台接口类组件，生产环境应配置鉴权中间件、路径白名单与频率限制。
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       <section class="pg-section is-tight">
-        <div class="pg-container">
+        <div class="layui-container">
           <div class="pg-section-head">
             <div>
               <div class="pg-eyebrow">Tech</div>
               <h2 class="pg-section-title">本站技术栈</h2>
               <p class="pg-section-desc">
-                Vite 仅用于开发服务器，生产构建由 Node 脚本输出静态文件；部署产物不依赖服务端运行。
+                Vite 只负责开发服务器与热更新，生产构建由 Node 脚本输出静态文件；线上不依赖任何服务端运行时。
               </p>
             </div>
           </div>
-          <div class="pg-grid pg-grid-4">
-            <div class="pg-card">
-              <div class="pg-card-icon"><i class="layui-icon layui-icon-template-1"></i></div>
-              <h3 class="pg-card-title">Layui 2.13.9</h3>
-              <p class="pg-card-text">
-                导航、分页、弹层与基础样式，静态资源位于 src/component/layui，构建时原样保留。
-              </p>
+          <div class="layui-row layui-col-space20">
+            <div class="layui-col-md3">
+              <div class="layui-card pg-card">
+                <div class="pg-card-icon"><i class="layui-icon layui-icon-template-1"></i></div>
+                <h3 class="pg-card-title">Layui 2.13.9</h3>
+                <p class="pg-card-text">
+                  导航、分页、弹层与基础样式，静态资源位于 src/component/layui，构建时原样保留。
+                </p>
+              </div>
             </div>
-            <div class="pg-card">
-              <div class="pg-card-icon"><i class="layui-icon layui-icon-code-circle"></i></div>
-              <h3 class="pg-card-title">原生 JavaScript</h3>
-              <p class="pg-card-text">数据渲染、搜索筛选、URL 同步与复制命令均由一个通用脚本处理。</p>
+            <div class="layui-col-md3">
+              <div class="layui-card pg-card">
+                <div class="pg-card-icon"><i class="layui-icon layui-icon-code-circle"></i></div>
+                <h3 class="pg-card-title">原生 JavaScript</h3>
+                <p class="pg-card-text">数据渲染、搜索筛选、URL 同步与复制命令均由一个通用脚本处理。</p>
+              </div>
             </div>
-            <div class="pg-card">
-              <div class="pg-card-icon"><i class="layui-icon layui-icon-file"></i></div>
-              <h3 class="pg-card-title">集中数据源</h3>
-              <p class="pg-card-text">组件与项目数据维护在 data.js，页面按需读取并渲染，避免重复维护。</p>
+            <div class="layui-col-md3">
+              <div class="layui-card pg-card">
+                <div class="pg-card-icon"><i class="layui-icon layui-icon-file"></i></div>
+                <h3 class="pg-card-title">集中数据源</h3>
+                <p class="pg-card-text">组件与项目数据维护在 data.js，页面按需读取并渲染，避免重复维护。</p>
+              </div>
             </div>
-            <div class="pg-card">
-              <div class="pg-card-icon"><i class="layui-icon layui-icon-release"></i></div>
-              <h3 class="pg-card-title">静态托管</h3>
-              <p class="pg-card-text">把 public 目录作为站点根即可部署，不需要 PHP、数据库或 Node 环境。</p>
+            <div class="layui-col-md3">
+              <div class="layui-card pg-card">
+                <div class="pg-card-icon"><i class="layui-icon layui-icon-release"></i></div>
+                <h3 class="pg-card-title">静态托管</h3>
+                <p class="pg-card-text">
+                  把 dist 目录作为站点根即可部署，不需要 PHP、数据库或 Node 运行环境。
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       <section class="pg-section is-tight">
-        <div class="pg-container">
+        <div class="layui-container">
           <div class="pg-cta">
             <div class="pg-cta-text">
               <h2>数据与源码</h2>
-              <p>
-                本站源码与每个开源项目都可以在 GitHub 找到。如果发现描述不准确，欢迎直接提交 Issue 或 Pull
-                Request。
-              </p>
+              <p>本站源码与每个项目都在 GitHub。发现描述不准确，欢迎直接提 Issue 或 Pull Request。</p>
             </div>
             <div class="pg-cta-actions">
               <a
-                class="pg-btn pg-btn-primary"
+                class="layui-btn pg-btn pg-btn-primary"
                 href="https://github.com/indiboy-create"
                 target="_blank"
                 rel="noopener"
                 ><i class="layui-icon layui-icon-log"></i>GitHub 主页</a
               >
-              <a class="pg-btn pg-btn-ghost" href="index.html">回到首页</a>
+              <a class="layui-btn-primary layui-btn pg-btn pg-btn-ghost" href="index.html">回到首页</a>
             </div>
           </div>
         </div>
@@ -216,7 +257,7 @@
     </main>
 
     <footer class="pg-footer">
-      <div class="pg-container">
+      <div class="layui-container">
         <div class="pg-footer-grid">
           <div>
             <a class="pg-brand" href="index.html">
@@ -241,7 +282,7 @@
             <h4>项目</h4>
             <div class="pg-footer-links">
               <a href="project.html?slug=think-store">think-store</a>
-              <a href="project.html?slug=think-static">think-static</a>
+              <a href="project.html?slug=think-store-chess">think-store-chess</a>
               <a href="project.html?slug=layuiadmin-iframe">LayuiAdmin-Iframe</a>
               <a href="project.html?slug=glide-server">glide-server</a>
               <a href="projects.html">全部项目</a>
@@ -251,6 +292,7 @@
             <h4>资源</h4>
             <div class="pg-footer-links">
               <a href="packages.html">组件矩阵</a>
+              <a href="join.html">加入我们</a>
               <a href="about.html">关于本站</a>
               <a href="https://github.com/indiboy-create" target="_blank" rel="noopener">GitHub 主页</a>
               <a href="https://layui.dev/" target="_blank" rel="noopener">Layui 文档</a>

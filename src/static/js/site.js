@@ -33,6 +33,13 @@
       .replace(/'/g, '&#39;');
   }
 
+  function emName(name) {
+    var safe = esc(name);
+    var index = safe.lastIndexOf('-');
+    if (index < 0 || index === safe.length - 1) return safe;
+    return safe.slice(0, index + 1) + '<em>' + safe.slice(index + 1) + '</em>';
+  }
+
   function groupOf(key) {
     return GROUP_MAP[key] || { key: key, name: key, color: '#16baaa', icon: 'layui-icon-component' };
   }
@@ -74,7 +81,7 @@
   function pkgTags(tags) {
     return (tags || [])
       .map(function (tag) {
-        return '<span class="pg-tag">' + esc(tag) + '</span>';
+        return '<span class="layui-badge-rim layui-badge pg-tag">' + esc(tag) + '</span>';
       })
       .join('');
   }
@@ -108,8 +115,9 @@
         return p.group === 'store';
       }).length;
       var independentCount = DATA.projects.filter(function (p) {
-        return p.category === '独立服务' || p.category === '探索项目';
+        return p.category !== '应用商店';
       }).length;
+
       stats.innerHTML = [
         { value: DATA.packages.length, unit: '个', label: 'Composer 组件' },
         { value: DATA.groups.length, unit: '类', label: '能力分类' },
@@ -158,8 +166,15 @@
     var composerCount = DATA.packages.filter(function (p) {
       return p.group !== 'store';
     }).length;
-    var storeCount = DATA.packages.filter(function (p) {
-      return p.group === 'store';
+
+    var storeProjects = DATA.projects.filter(function (p) {
+      return p.category === '应用商店';
+    }).length;
+    var frameworkCount = DATA.projects.filter(function (p) {
+      return p.category === '后台框架';
+    }).length;
+    var independentProjects = DATA.projects.filter(function (p) {
+      return p.category !== '应用商店' && p.category !== '后台框架';
     }).length;
     var entries = [
       {
@@ -167,34 +182,34 @@
         title: 'Composer 组件',
         count: composerCount,
         unit: '个包',
-        desc: '围绕 ThinkPHP 8 打磨的即插即用能力模块，从认证、存储到图片与第三方集成。',
+        desc: '51 个即插即用能力包，从插件骨架、认证到图片与第三方集成。',
         href: 'packages.html',
         link: '查看组件矩阵',
       },
       {
         icon: 'layui-icon-cart',
         title: '应用商店',
-        count: storeCount,
-        unit: '个发布包',
-        desc: 'think-static 负责自动部署，think-store 负责查询与同步，构成完整的发布包闭环。',
+        count: storeProjects,
+        unit: '个项目',
+        desc: 'think-store 管理发布包，示例、编辑器、象棋与天气构成可安装的站点矩阵。',
         href: 'projects.html',
         link: '了解商店体系',
       },
       {
         icon: 'layui-icon-desktop',
         title: '后台框架',
-        count: 1,
+        count: frameworkCount,
         unit: '套模板',
-        desc: 'LayuiAdmin-Iframe：经典 iframe 布局，原生 Layui 模块体系与完整前端工程化脚本。',
+        desc: 'LayuiAdmin-Iframe：iframe 布局、原生 Layui 模块体系与前端工程化脚本。',
         href: 'project.html?slug=layuiadmin-iframe',
         link: '查看后台框架',
       },
       {
         icon: 'layui-icon-picture',
         title: '独立项目',
-        count: 3,
+        count: independentProjects,
         unit: '个项目',
-        desc: 'glide-server 按需缩略图服务与其它脱离框架也能独立运行的工程实践。',
+        desc: 'glide-server 缩略图服务、ApiDoc 文档界面，以及可脱离框架运行的工程实践。',
         href: 'projects.html',
         link: '浏览独立项目',
       },
@@ -203,7 +218,8 @@
     box.innerHTML = entries
       .map(function (item) {
         return (
-          '<a class="pg-entry pg-fade" href="' +
+          '<div class="layui-col-md3">' +
+          '<a class="layui-card pg-entry pg-fade" href="' +
           item.href +
           '">' +
           '<div class="pg-entry-top">' +
@@ -225,7 +241,8 @@
           '<span class="pg-entry-link">' +
           item.link +
           ' <i class="layui-icon layui-icon-right"></i></span>' +
-          '</a>'
+          '</a>' +
+          '</div>'
         );
       })
       .join('');
@@ -236,12 +253,12 @@
     if (!box) return;
 
     var names = [
+      'think-auth',
+      'think-store-chess',
+      'think-store-weather',
       'think-addons',
       'think-jwt',
       'think-glide',
-      'think-regions',
-      'think-workerman',
-      'think-store-codeditor',
     ];
     var items = names
       .map(function (name) {
@@ -253,6 +270,7 @@
       .map(function (pkg, index) {
         var group = groupOf(pkg.group);
         return (
+          '<div class="layui-col-md4">' +
           '<a class="pg-pkg pg-fade pg-delay-' +
           ((index % 3) + 1) +
           '" href="' +
@@ -275,7 +293,8 @@
           '<div class="pg-pkg-foot"><span>' +
           esc(group.name) +
           '</span><span>查看用法 <i class="layui-icon layui-icon-right"></i></span></div>' +
-          '</a>'
+          '</a>' +
+          '</div>'
         );
       })
       .join('');
@@ -293,6 +312,7 @@
         var preview = items.slice(0, 6);
         var rest = items.length - preview.length;
         return (
+          '<div class="layui-col-md3">' +
           '<div class="pg-group-card pg-fade pg-delay-' +
           ((index % 4) + 1) +
           '" style="--accent:' +
@@ -331,6 +351,7 @@
           '<a class="pg-group-more" href="packages.html?group=' +
           group.key +
           '">查看全部 <i class="layui-icon layui-icon-right"></i></a>' +
+          '</div>' +
           '</div>'
         );
       })
@@ -356,9 +377,12 @@
           '<div>' +
           '<h3>' +
           esc(project.name) +
-          '<span class="pg-badge">' +
+          '<span class="layui-badge pg-badge">' +
           esc(project.badge) +
           '</span></h3>' +
+          '<p class="pg-project-tagline">' +
+          esc(project.tagline) +
+          '</p>' +
           '<p>' +
           esc(project.summary) +
           '</p>' +
@@ -366,7 +390,7 @@
           project.stack
             .slice(0, 4)
             .map(function (tech) {
-              return '<span class="pg-tag">' + esc(tech) + '</span>';
+              return '<span class="layui-badge-rim layui-badge pg-tag">' + esc(tech) + '</span>';
             })
             .join('') +
           '</div>' +
@@ -407,6 +431,16 @@
     var filtered = [];
     var page = state.page;
     var timer = null;
+
+    if (window.layui && layui.use) {
+      layui.use('form', function () {
+        layui.form.on('select(pkg-sort)', function (data) {
+          state.sort = data.value;
+          page = 1;
+          apply(true);
+        });
+      });
+    }
 
     function buildChips() {
       var all = DATA.packages.length;
@@ -486,6 +520,7 @@
         .map(function (pkg, index) {
           var group = groupOf(pkg.group);
           return (
+            '<div class="layui-col-md4">' +
             '<a class="pg-pkg pg-fade pg-delay-' +
             ((index % 3) + 1) +
             '" href="' +
@@ -512,23 +547,24 @@
             '</span><span>' +
             esc(pkg.package) +
             '</span></div>' +
-            '</a>'
+            '</a>' +
+            '</div>'
           );
         })
         .join('');
 
       emptyBox.style.display = filtered.length ? 'none' : 'block';
-      grid.style.display = filtered.length ? 'grid' : 'none';
+      grid.style.display = filtered.length ? 'flex' : 'none';
 
       var groupLabel = state.group === 'all' ? '全部组件' : groupOf(state.group).name;
       metaBox.innerHTML =
-        '<div>共找到 <strong>' +
+        '<div>共 <strong>' +
         filtered.length +
-        '</strong> 个组件 · ' +
+        '</strong> 个 · ' +
         esc(groupLabel) +
         (state.q ? ' · 关键词 “' + esc(state.q) + '”' : '') +
         '</div>' +
-        '<div><select id="pkg-sort" aria-label="排序方式">' +
+        '<div><select id="pkg-sort" class="layui-select" lay-filter="pkg-sort" aria-label="排序方式">' +
         '<option value="default"' +
         (state.sort === 'default' ? ' selected' : '') +
         '>推荐排序</option>' +
@@ -546,6 +582,12 @@
         page = 1;
         apply();
       });
+
+      if (window.layui && layui.use) {
+        layui.use('form', function () {
+          layui.form.render('select');
+        });
+      }
     }
 
     function renderPager() {
@@ -575,7 +617,7 @@
         });
       } else {
         pagerBox.innerHTML =
-          '<button class="pg-btn pg-btn-outline pg-btn-sm" type="button">第 ' +
+          '<button class="layui-btn-sm layui-btn-primary layui-btn pg-btn pg-btn-outline pg-btn-sm" type="button">第 ' +
           page +
           ' / ' +
           totalPages +
@@ -637,7 +679,7 @@
       showMissing(
         root,
         '没有找到这个组件',
-        '组件可能已经更名，或链接中的 name 参数不正确。',
+        '可能已更名，或链接里的 name 参数不正确。',
         'packages.html',
         '返回组件矩阵'
       );
@@ -656,46 +698,37 @@
 
     var head = $('#detail-head');
     head.innerHTML =
-      '<div class="pg-breadcrumb"><a href="index.html">首页</a><i class="layui-icon layui-icon-right"></i>' +
-      '<a href="packages.html">组件矩阵</a><i class="layui-icon layui-icon-right"></i>' +
-      '<a href="packages.html?group=' +
-      group.key +
-      '">' +
-      esc(group.name) +
-      '</a><i class="layui-icon layui-icon-right"></i>' +
-      '<span>' +
-      esc(pkg.name) +
-      '</span></div>' +
+      '<span class="pg-hero-badge pg-fade"><i class="layui-icon layui-icon-fire"></i>ThinkPHP 8 工程矩阵 · 51 个组件 · 8 类能力</span>' +
       '<div class="pg-detail-top">' +
       '<div class="pg-detail-icon"><i class="layui-icon ' +
       group.icon +
       '"></i></div>' +
       '<div>' +
       '<h1 class="pg-detail-title">' +
-      esc(pkg.name) +
+      emName(pkg.name) +
       '</h1>' +
       '<p class="pg-detail-tagline">' +
       esc(pkg.summary) +
       '</p>' +
       '<div class="pg-detail-badges">' +
-      '<span class="pg-badge">' +
+      '<span class="layui-badge pg-badge">' +
       esc(group.name) +
       '</span>' +
-      '<span class="pg-badge is-ghost">' +
+      '<span class="layui-badge-rim layui-badge pg-badge is-ghost">' +
       esc(pkg.title) +
       '</span>' +
-      '<span class="pg-badge is-ghost">PHP >= 8.0</span>' +
-      '<span class="pg-badge is-ghost">ThinkPHP 8</span>' +
+      '<span class="layui-badge-rim layui-badge pg-badge is-ghost">PHP >= 8.0</span>' +
+      '<span class="layui-badge-rim layui-badge pg-badge is-ghost">ThinkPHP 8</span>' +
       '</div></div></div>';
 
     $('#detail-body').innerHTML =
-      '<div class="pg-panel">' +
-      '<h2 class="pg-panel-title"><i class="layui-icon layui-icon-about"></i>组件说明</h2>' +
+      '<div class="layui-panel pg-panel">' +
+      '<h2 class="pg-panel-title"><i class="layui-icon layui-icon-about"></i>这个包做什么</h2>' +
       '<div class="pg-prose"><p>' +
       esc(pkg.description) +
       '</p></div>' +
       '</div>' +
-      '<div class="pg-panel">' +
+      '<div class="layui-panel pg-panel">' +
       '<h2 class="pg-panel-title"><i class="layui-icon layui-icon-ok-circle"></i>核心能力</h2>' +
       '<div class="pg-feature-list">' +
       pkg.highlights
@@ -705,32 +738,32 @@
         .join('') +
       '</div>' +
       '</div>' +
-      '<div class="pg-panel">' +
-      '<h2 class="pg-panel-title"><i class="layui-icon layui-icon-download-circle"></i>安装</h2>' +
+      '<div class="layui-panel pg-panel">' +
+      '<h2 class="pg-panel-title"><i class="layui-icon layui-icon-download-circle"></i>安装与启用</h2>' +
       '<div class="pg-code-label">composer</div>' +
       '<pre class="pg-code"><button type="button" class="pg-code-copy" data-copy="composer require ' +
       esc(pkg.package) +
       '" title="复制命令"><i class="layui-icon layui-icon-file"></i></button>composer require ' +
       esc(pkg.package) +
       '</pre>' +
-      '<div class="pg-code-label">服务发现（如项目未自动加载）</div>' +
+      '<div class="pg-code-label">服务发现与配置发布（按需）</div>' +
       '<pre class="pg-code"><button type="button" class="pg-code-copy" data-copy="php think service:discover" title="复制命令"><i class="layui-icon layui-icon-file"></i></button>php think service:discover\nphp think vendor:publish</pre>' +
       '</div>' +
-      '<div class="pg-panel">' +
-      '<h2 class="pg-panel-title"><i class="layui-icon layui-icon-link"></i>适用场景与标签</h2>' +
+      '<div class="layui-panel pg-panel">' +
+      '<h2 class="pg-panel-title"><i class="layui-icon layui-icon-link"></i>适用场景</h2>' +
       '<div class="pg-pkg-tags" style="margin-bottom:14px">' +
       pkgTags(pkg.tags) +
       '</div>' +
-      '<div class="pg-prose"><p>该组件归属于「' +
+      '<div class="pg-prose"><p>属于「' +
       esc(group.name) +
-      '」分类。' +
+      '」。' +
       esc(group.desc) +
-      ' 适合在 ThinkPHP 8 项目中通过 Composer 引入，通过服务注册、配置文件与门面直接使用。</p></div>' +
+      ' 在 ThinkPHP 8 项目中通过 Composer 引入，用服务注册、配置文件与门面即可使用。</p></div>' +
       '</div>';
 
     $('#detail-side').innerHTML =
-      '<div class="pg-side-card">' +
-      '<h4>组件信息</h4>' +
+      '<div class="layui-card pg-side-card">' +
+      '<h4>包信息</h4>' +
       '<ul class="pg-meta-list">' +
       '<li><span class="k">Composer</span><span class="v mono">' +
       esc(pkg.package) +
@@ -744,17 +777,17 @@
       '<li><span class="k">PHP</span><span class="v mono">>= 8.0</span></li>' +
       '<li><span class="k">框架</span><span class="v">ThinkPHP 8</span></li>' +
       '</ul></div>' +
-      '<div class="pg-side-card">' +
+      '<div class="layui-card pg-side-card">' +
       '<h4>仓库</h4>' +
-      '<a class="pg-btn pg-btn-outline pg-btn-sm" style="width:100%" href="' +
+      '<a class="layui-btn-sm layui-btn-primary layui-btn pg-btn pg-btn-outline pg-btn-sm" style="width:100%" href="' +
       repoUrl(pkg.name) +
       '" target="_blank" rel="noopener">' +
       '<i class="layui-icon layui-icon-log">GitHub</i></a>' +
       '<p style="margin:12px 0 0;font-size:12px;color:#7a9291;line-height:1.7">README、更新记录与 Issue 均在 GitHub 仓库维护。</p>' +
       '</div>' +
       (related.length
-        ? '<div class="pg-side-card">' +
-          '<h4>同分类推荐</h4>' +
+        ? '<div class="layui-card pg-side-card">' +
+          '<h4>同类组件</h4>' +
           '<div class="pg-related">' +
           related
             .map(function (item) {
@@ -789,7 +822,7 @@
       '<p>' +
       esc(desc) +
       '</p>' +
-      '<a class="pg-btn pg-btn-primary" href="' +
+      '<a class="layui-btn pg-btn pg-btn-primary" href="' +
       href +
       '">' +
       esc(label) +
@@ -802,10 +835,10 @@
     if (!box) return;
 
     var core = DATA.projects.filter(function (p) {
-      return p.category === '应用商店' || p.category === '部署工具';
+      return p.category === '应用商店';
     });
     var independent = DATA.projects.filter(function (p) {
-      return p.category !== '应用商店' && p.category !== '部署工具';
+      return p.category !== '应用商店';
     });
 
     function cards(items, startIndex) {
@@ -823,20 +856,23 @@
             '<div>' +
             '<h3>' +
             esc(project.name) +
-            '<span class="pg-badge">' +
+            '<span class="layui-badge pg-badge">' +
             esc(project.badge) +
             '</span></h3>' +
+            '<p class="pg-project-tagline">' +
+            esc(project.tagline) +
+            '</p>' +
             '<p>' +
             esc(project.summary) +
             '</p>' +
             '<div class="pg-project-meta">' +
-            '<span class="pg-tag">' +
+            '<span class="layui-badge-rim layui-badge pg-tag">' +
             esc(project.category) +
             '</span>' +
             project.stack
               .slice(0, 3)
               .map(function (tech) {
-                return '<span class="pg-tag">' + esc(tech) + '</span>';
+                return '<span class="layui-badge-rim layui-badge pg-tag">' + esc(tech) + '</span>';
               })
               .join('') +
             '</div></div>' +
@@ -848,17 +884,17 @@
     }
 
     box.innerHTML =
-      '<div class="pg-section is-tight" id="store-suite">' +
+      '<div class="pg-project-group" id="store-suite">' +
       '<div class="pg-section-head"><div><div class="pg-eyebrow">Store Suite</div>' +
       '<h2 class="pg-section-title">应用商店套件</h2>' +
-      '<p class="pg-section-desc">从静态资源部署到发布包管理、再到示例与在线编辑器，四个仓库组成一条完整链路。</p></div></div>' +
+      '<p class="pg-section-desc">从发布包管理到示例、编辑器、象棋与天气站点，五个项目共享同一套发布约定。</p></div></div>' +
       '<div class="pg-project-list">' +
       cards(core, 0) +
       '</div></div>' +
-      '<div class="pg-section is-tight" id="independent">' +
+      '<div class="pg-project-group" id="independent">' +
       '<div class="pg-section-head"><div><div class="pg-eyebrow">Independent</div>' +
       '<h2 class="pg-section-title">独立项目</h2>' +
-      '<p class="pg-section-desc">不依附 Composer 包形态的框架、服务与探索项目，可单独部署运行。</p></div></div>' +
+      '<p class="pg-section-desc">不依附 Composer 发布包形态的框架、服务、文档界面与探索项目，可单独部署运行。</p></div></div>' +
       '<div class="pg-project-list">' +
       cards(independent, 4) +
       '</div></div>';
@@ -868,10 +904,10 @@
     var suiteBox = $('#store-suite');
     var pkgBox = $('#store-packages');
     var endpointBox = $('#store-endpoints');
-    if (!suiteBox && !pkgBox && !endpointBox) return;
+    if (!pkgBox && !endpointBox) return;
 
     var storeProjects = DATA.projects.filter(function (project) {
-      return project.category === '应用商店' || project.category === '部署工具';
+      return project.category === '应用商店';
     });
 
     if (suiteBox) {
@@ -889,20 +925,23 @@
             '<div>' +
             '<h3>' +
             esc(project.name) +
-            '<span class="pg-badge">' +
+            '<span class="layui-badge pg-badge">' +
             esc(project.badge) +
             '</span></h3>' +
+            '<p class="pg-project-tagline">' +
+            esc(project.tagline) +
+            '</p>' +
             '<p>' +
             esc(project.summary) +
             '</p>' +
             '<div class="pg-project-meta">' +
-            '<span class="pg-tag">' +
+            '<span class="layui-badge-rim layui-badge pg-tag">' +
             esc(project.category) +
             '</span>' +
             project.stack
               .slice(0, 3)
               .map(function (tech) {
-                return '<span class="pg-tag">' + esc(tech) + '</span>';
+                return '<span class="layui-badge-rim layui-badge pg-tag">' + esc(tech) + '</span>';
               })
               .join('') +
             '</div></div>' +
@@ -922,6 +961,7 @@
         .map(function (pkg, index) {
           var group = groupOf(pkg.group);
           return (
+            '<div class="layui-col-md6">' +
             '<a class="pg-pkg pg-fade pg-delay-' +
             ((index % 4) + 1) +
             '" href="' +
@@ -948,7 +988,8 @@
             '</span><span>' +
             esc(pkg.package) +
             '</span></div>' +
-            '</a>'
+            '</a>' +
+            '</div>'
           );
         })
         .join('');
@@ -965,7 +1006,7 @@
       endpointBox.innerHTML =
         '<h2 class="pg-panel-title"><i class="layui-icon layui-icon-link"></i>路由清单</h2>' +
         (rows.length
-          ? '<table class="pg-endpoints"><thead><tr><th style="width:78px">方法</th><th style="width:190px">地址</th>' +
+          ? '<table class="layui-table pg-endpoints"><thead><tr><th style="width:78px">方法</th><th style="width:190px">地址</th>' +
             '<th style="width:170px">所属发布包</th><th>说明</th></tr></thead><tbody>' +
             rows
               .map(function (row) {
@@ -1023,38 +1064,34 @@
       .filter(Boolean);
 
     $('#project-head').innerHTML =
-      '<div class="pg-breadcrumb"><a href="index.html">首页</a><i class="layui-icon layui-icon-right"></i>' +
-      '<a href="projects.html">项目</a><i class="layui-icon layui-icon-right"></i>' +
-      '<span>' +
-      esc(project.name) +
-      '</span></div>' +
+      '<span class="pg-hero-badge pg-fade"><i class="layui-icon layui-icon-fire"></i>ThinkPHP 8 工程矩阵 · 51 个组件 · 8 类能力</span>' +
       '<div class="pg-detail-top">' +
       '<div class="pg-detail-icon"><i class="layui-icon ' +
       project.icon +
       '"></i></div>' +
       '<div><h1 class="pg-detail-title">' +
-      esc(project.name) +
+      emName(project.name) +
       '</h1>' +
       '<p class="pg-detail-tagline">' +
       esc(project.tagline) +
       '</p>' +
       '<div class="pg-detail-badges">' +
-      '<span class="pg-badge">' +
+      '<span class="layui-badge pg-badge">' +
       esc(project.badge) +
       '</span>' +
-      '<span class="pg-badge is-ghost">' +
+      '<span class="layui-badge-rim layui-badge pg-badge is-ghost">' +
       esc(project.category) +
       '</span>' +
       project.stack
         .slice(0, 3)
         .map(function (tech) {
-          return '<span class="pg-badge is-ghost">' + esc(tech) + '</span>';
+          return '<span class="layui-badge-rim layui-badge pg-badge is-ghost">' + esc(tech) + '</span>';
         })
         .join('') +
       '</div></div></div>';
 
     var bodyHtml =
-      '<div class="pg-panel"><h2 class="pg-panel-title"><i class="layui-icon layui-icon-about"></i>项目定位</h2>' +
+      '<div class="layui-panel pg-panel"><h2 class="pg-panel-title"><i class="layui-icon layui-icon-about"></i>项目定位</h2>' +
       '<div class="pg-prose">' +
       project.intro
         .map(function (text) {
@@ -1062,7 +1099,7 @@
         })
         .join('') +
       '</div></div>' +
-      '<div class="pg-panel"><h2 class="pg-panel-title"><i class="layui-icon layui-icon-ok-circle"></i>核心特性</h2>' +
+      '<div class="layui-panel pg-panel"><h2 class="pg-panel-title"><i class="layui-icon layui-icon-ok-circle"></i>核心特性</h2>' +
       '<div class="pg-feature-list">' +
       project.features
         .map(function (feature) {
@@ -1079,7 +1116,7 @@
 
     if (project.install) {
       bodyHtml +=
-        '<div class="pg-panel"><h2 class="pg-panel-title"><i class="layui-icon layui-icon-download-circle"></i>安装与启动</h2>' +
+        '<div class="layui-panel pg-panel"><h2 class="pg-panel-title"><i class="layui-icon layui-icon-download-circle"></i>安装与启动</h2>' +
         '<pre class="pg-code"><button type="button" class="pg-code-copy" data-copy="' +
         esc(project.install) +
         '" title="复制命令"><i class="layui-icon layui-icon-file"></i></button>' +
@@ -1095,7 +1132,7 @@
 
     if (project.endpoints && project.endpoints.length) {
       bodyHtml +=
-        '<div class="pg-panel"><h2 class="pg-panel-title"><i class="layui-icon layui-icon-link"></i>接口</h2>' +
+        '<div class="layui-panel pg-panel"><h2 class="pg-panel-title"><i class="layui-icon layui-icon-link"></i>接口</h2>' +
         '<table class="pg-endpoints"><thead><tr><th style="width:78px">方法</th><th style="width:220px">地址</th><th>说明</th></tr></thead><tbody>' +
         project.endpoints
           .map(function (endpoint) {
@@ -1117,11 +1154,11 @@
     }
 
     bodyHtml +=
-      '<div class="pg-panel"><h2 class="pg-panel-title"><i class="layui-icon layui-icon-set"></i>技术栈</h2>' +
+      '<div class="layui-panel pg-panel"><h2 class="pg-panel-title"><i class="layui-icon layui-icon-set"></i>技术栈</h2>' +
       '<div class="pg-pkg-tags">' +
       project.stack
         .map(function (tech) {
-          return '<span class="pg-tag">' + esc(tech) + '</span>';
+          return '<span class="layui-badge-rim layui-badge pg-tag">' + esc(tech) + '</span>';
         })
         .join('') +
       '</div></div>';
@@ -1129,7 +1166,7 @@
     $('#project-body').innerHTML = bodyHtml;
 
     var sideHtml =
-      '<div class="pg-side-card"><h4>项目信息</h4><ul class="pg-meta-list">' +
+      '<div class="layui-card pg-side-card"><h4>项目信息</h4><ul class="pg-meta-list">' +
       '<li><span class="k">名称</span><span class="v">' +
       esc(project.name) +
       '</span></li>' +
@@ -1143,15 +1180,15 @@
         ? '<li><span class="k">入口</span><span class="v mono">' + esc(project.entry) + '</span></li>'
         : '') +
       '</ul></div>' +
-      '<div class="pg-side-card"><h4>仓库</h4>' +
-      '<a class="pg-btn pg-btn-outline pg-btn-sm" style="width:100%" href="' +
+      '<div class="layui-card pg-side-card"><h4>仓库</h4>' +
+      '<a class="layui-btn-sm layui-btn-primary layui-btn pg-btn pg-btn-outline pg-btn-sm" style="width:100%" href="' +
       repoUrl(project.name) +
       '" target="_blank" rel="noopener"><i class="layui-icon layui-icon-log">GitHub</i></a>' +
       '</div>';
 
     if (related.length) {
       sideHtml +=
-        '<div class="pg-side-card"><h4>相关项目</h4><div class="pg-related">' +
+        '<div class="layui-card pg-side-card"><h4>相关项目</h4><div class="pg-related">' +
         related
           .map(function (item) {
             var href = item.slug ? projectHref(item) : packageHref(item);
@@ -1237,7 +1274,8 @@
     initProjectDetail();
 
     if (window.layui && layui.use) {
-      layui.use('layer', function () {
+      layui.use(['layer', 'form', 'element'], function () {
+        layui.form.render();
         bindCopy(layui.layer);
       });
     }

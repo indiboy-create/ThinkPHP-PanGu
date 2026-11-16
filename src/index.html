@@ -6,12 +6,12 @@
     <title>PanGu · ThinkPHP 工程矩阵</title>
     <meta
       name="description"
-      content="收录 indiboy 开源的 ThinkPHP 8 Composer 组件、后台框架、图片服务与应用商店工具，按能力分类，提供安装方式与使用说明。"
+      content="面向 ThinkPHP 8 的开源工程索引：51 个 Composer 组件、think-store 应用商店、Layui 后台框架与独立图片服务，按能力分类并给出真实使用场景。"
     />
     <meta property="og:title" content="PanGu · ThinkPHP 工程矩阵" />
     <meta
       property="og:description"
-      content="50 个 ThinkPHP 8 Composer 组件，以及应用商店、后台框架与按需图片服务的完整工程拼图。"
+      content="51 个 ThinkPHP 8 Composer 组件、可安装的 think-store 发布包、iframe 后台框架与按需图片服务，一套可以自由组合的工程拼图。"
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://indiboy-create.github.io/ThinkPHP-PanGu/" />
@@ -22,7 +22,7 @@
   </head>
   <body data-page="home">
     <header class="pg-header">
-      <div class="pg-container pg-header-inner">
+      <div class="layui-container pg-header-inner">
         <a class="pg-brand" href="index.html">
           <span class="pg-brand-mark"><i class="layui-icon layui-icon-engine"></i></span>
           <span>PanGu<small>THINKPHP MATRIX</small></span>
@@ -31,6 +31,7 @@
           <a href="index.html" data-page="home">首页</a>
           <a href="store.html" data-page="store">应用商店</a>
           <a href="packages.html" data-page="packages">组件矩阵</a>
+          <a href="join.html" data-page="join">加入我们</a>
           <a href="projects.html" data-page="projects">项目</a>
           <a href="about.html" data-page="about">关于</a>
         </nav>
@@ -47,56 +48,56 @@
 
     <main class="pg-main">
       <section class="pg-hero">
-        <div class="pg-container pg-hero-inner">
+        <div class="layui-container pg-hero-inner">
           <span class="pg-hero-badge pg-fade">
             <i class="layui-icon layui-icon-fire"></i>
-            ThinkPHP 8 生态 · Composer 驱动 · 持续更新
+            ThinkPHP 8 工程矩阵 · 51 个组件 · 8 类能力
           </span>
           <h1 class="pg-hero-title pg-fade pg-delay-1">
             让每一个 <em>ThinkPHP</em> 能力<br />都能被直接复用
           </h1>
           <p class="pg-hero-sub pg-fade pg-delay-2">
-            收录 50 个 Composer 组件、一套 iframe 后台框架、一个按需缩略图服务， 以及由 think-static 与
-            think-store 构成的应用商店发布链路。按能力分类，给出安装方式与真实使用场景。
+            把插件、认证、数据、媒体与集成能力做成可安装的包，再用 think-store 把整个站点变成一条
+            <code>composer require</code> 就能落地的发布包。
           </p>
           <div class="pg-hero-actions pg-fade pg-delay-3">
             <div class="pg-search" style="width: 320px">
               <i class="layui-icon layui-icon-search"></i>
               <input id="hero-search" type="search" placeholder="搜索组件，例如 jwt、图片、备份" />
             </div>
-            <a class="pg-btn pg-btn-primary" href="packages.html">浏览组件矩阵</a>
-            <a class="pg-btn pg-btn-ghost" href="projects.html">应用商店体系</a>
+            <a class="layui-btn pg-btn pg-btn-primary" href="packages.html">浏览组件矩阵</a>
+            <a class="layui-btn-primary layui-btn pg-btn pg-btn-ghost" href="store.html">了解应用商店</a>
           </div>
           <div class="pg-hero-stats" id="hero-stats"></div>
         </div>
       </section>
 
       <section class="pg-section">
-        <div class="pg-container">
+        <div class="layui-container">
           <div class="pg-section-head">
             <div>
               <div class="pg-eyebrow">Ecosystem</div>
-              <h2 class="pg-section-title">四条主线，一套拼图</h2>
+              <h2 class="pg-section-title">四条主线，一套工程拼图</h2>
               <p class="pg-section-desc">
-                组件解决单点能力，框架提供界面底座，服务独立承担图片处理，商店体系负责发布与部署。
+                组件补单点能力，框架提供界面底座，图片服务独立部署，商店把站点变成可安装的发布包。
               </p>
             </div>
             <a class="pg-section-link" href="projects.html"
               >查看全部项目 <i class="layui-icon layui-icon-right"></i
             ></a>
           </div>
-          <div class="pg-grid pg-grid-4" id="entry-grid"></div>
+          <div class="layui-row layui-col-space20" id="entry-grid"></div>
         </div>
       </section>
 
       <section class="pg-band pg-section">
-        <div class="pg-container pg-band-inner">
+        <div class="layui-container pg-band-inner">
           <div class="pg-section-head">
             <div>
               <div class="pg-eyebrow">Store Pipeline</div>
-              <h2 class="pg-section-title">一套 Composer 驱动的站点发布链路</h2>
+              <h2 class="pg-section-title">发布包如何变成一个可访问的站点</h2>
               <p class="pg-section-desc">
-                声明部署清单、安装发布包、自动复制静态资源、在管理页统一同步，四个环节各由一个仓库承担。
+                声明清单、安装发布包、同步静态资源、在管理页统一维护，四步都围绕同一个发布包展开。
               </p>
             </div>
             <a class="pg-section-link" style="color: #7fe6da" href="project.html?slug=think-store"
@@ -105,78 +106,86 @@
           </div>
           <div class="pg-flow">
             <div class="pg-flow-step">
-              <h4>声明 project.json</h4>
-              <p>在发布包内定义部署路径、映射与排除规则。</p>
+              <h4>声明清单</h4>
+              <p>在包内写 project.json，定义部署路径、映射与排除规则。</p>
               <code>"path": "store-example"</code>
             </div>
             <div class="pg-flow-step">
-              <h4>Composer 安装</h4>
-              <p>允许 think-static 插件后安装发布包，服务自动注册。</p>
+              <h4>安装发布包</h4>
+              <p>composer require 后，服务与路由自动注册。</p>
               <code>composer require youvision/think-store-example</code>
             </div>
             <div class="pg-flow-step">
-              <h4>自动部署</h4>
-              <p>dump-autoload 触发部署，静态资源落到 public/store。</p>
-              <code>public/store/store-example</code>
+              <h4>同步资源</h4>
+              <p>think-store 按清单部署静态资源。</p>
+              <code>store-example</code>
             </div>
             <div class="pg-flow-step">
-              <h4>可视化管理</h4>
-              <p>think-store 管理首页查询发布包并重新同步。</p>
+              <h4>统一管理</h4>
+              <p>在管理页查看版本、部署目标与同步状态。</p>
               <code>/store/think-store/index.html</code>
             </div>
           </div>
           <div class="pg-band-actions">
-            <a class="pg-btn pg-btn-primary" href="project.html?slug=think-static">部署工具 think-static</a>
-            <a class="pg-btn pg-btn-ghost" href="project.html?slug=think-store-example">示例发布包</a>
-            <a class="pg-btn pg-btn-ghost" href="project.html?slug=think-store-codeditor">在线代码编辑器</a>
+            <a class="layui-btn pg-btn pg-btn-primary" href="project.html?slug=think-store-chess"
+              >象棋发布包</a
+            >
+            <a
+              class="layui-btn-primary layui-btn pg-btn pg-btn-ghost"
+              href="project.html?slug=think-store-weather"
+              >天气发布包</a
+            >
+            <a
+              class="layui-btn-primary layui-btn pg-btn pg-btn-ghost"
+              href="project.html?slug=think-store-codeditor"
+              >在线代码编辑器</a
+            >
           </div>
         </div>
       </section>
 
       <section class="pg-section">
-        <div class="pg-container">
+        <div class="layui-container">
           <div class="pg-section-head">
             <div>
               <div class="pg-eyebrow">Capabilities</div>
               <h2 class="pg-section-title">按能力分类的组件地图</h2>
               <p class="pg-section-desc">
-                从插件机制、安全认证到数据处理、媒体文件与第三方集成，每个包都围绕一个明确的工程问题。
+                八个分类，覆盖插件骨架、安全认证、数据处理、媒体文件、开放集成、开发体验、内容运营与商店发布包。
               </p>
             </div>
             <a class="pg-section-link" href="packages.html"
               >进入组件矩阵 <i class="layui-icon layui-icon-right"></i
             ></a>
           </div>
-          <div class="pg-grid pg-grid-4" id="group-grid"></div>
+          <div class="layui-row layui-col-space20" id="group-grid"></div>
         </div>
       </section>
 
       <section class="pg-section is-tight">
-        <div class="pg-container">
+        <div class="layui-container">
           <div class="pg-section-head">
             <div>
               <div class="pg-eyebrow">Featured</div>
-              <h2 class="pg-section-title">值得先看的 6 个组件</h2>
-              <p class="pg-section-desc">
-                覆盖插件体系、认证、图片、行政区划、实时通讯与在线编辑的常用能力。
-              </p>
+              <h2 class="pg-section-title">值得先看的六个包</h2>
+              <p class="pg-section-desc">新增的权限、象棋与天气，加上高频的插件、JWT 与图片处理。</p>
             </div>
             <a class="pg-section-link" href="packages.html"
               >全部组件 <i class="layui-icon layui-icon-right"></i
             ></a>
           </div>
-          <div class="pg-pkg-list" id="featured-grid"></div>
+          <div class="layui-row layui-col-space16" id="featured-grid"></div>
         </div>
       </section>
 
       <section class="pg-section is-tight">
-        <div class="pg-container">
+        <div class="layui-container">
           <div class="pg-section-head">
             <div>
               <div class="pg-eyebrow">Projects</div>
               <h2 class="pg-section-title">不只是组件，也有完整工程</h2>
               <p class="pg-section-desc">
-                后台框架、图片服务、应用商店与独立实验项目，按实际形态而非包名组织。
+                应用商店、后台框架、按需图片服务、文档界面与探索项目，按交付形态而不是包名组织。
               </p>
             </div>
             <a class="pg-section-link" href="projects.html"
@@ -188,24 +197,24 @@
       </section>
 
       <section class="pg-section is-tight">
-        <div class="pg-container">
+        <div class="layui-container">
           <div class="pg-cta">
             <div class="pg-cta-text">
               <h2>从 GitHub 开始，按需组合</h2>
               <p>
-                所有组件均以 Composer 包形式发布，仓库、README 与 Issue 都在 GitHub
-                上。遇到问题或想补充能力，可以直接提 Issue。
+                所有组件都以 Composer 包发布，README、Issue 与源码都在 GitHub。缺什么能力，也可以按
+                think-store 标准补一个。
               </p>
             </div>
             <div class="pg-cta-actions">
               <a
-                class="pg-btn pg-btn-primary"
+                class="layui-btn pg-btn pg-btn-primary"
                 href="https://github.com/indiboy-create"
                 target="_blank"
                 rel="noopener"
                 ><i class="layui-icon layui-icon-log"></i>访问 GitHub</a
               >
-              <a class="pg-btn pg-btn-ghost" href="packages.html">挑一个组件</a>
+              <a class="layui-btn-primary layui-btn pg-btn pg-btn-ghost" href="packages.html">挑一个组件</a>
             </div>
           </div>
         </div>
@@ -213,7 +222,7 @@
     </main>
 
     <footer class="pg-footer">
-      <div class="pg-container">
+      <div class="layui-container">
         <div class="pg-footer-grid">
           <div>
             <a class="pg-brand" href="index.html">
@@ -238,7 +247,7 @@
             <h4>项目</h4>
             <div class="pg-footer-links">
               <a href="project.html?slug=think-store">think-store</a>
-              <a href="project.html?slug=think-static">think-static</a>
+              <a href="project.html?slug=think-store-chess">think-store-chess</a>
               <a href="project.html?slug=layuiadmin-iframe">LayuiAdmin-Iframe</a>
               <a href="project.html?slug=glide-server">glide-server</a>
               <a href="projects.html">全部项目</a>
@@ -248,6 +257,7 @@
             <h4>资源</h4>
             <div class="pg-footer-links">
               <a href="packages.html">组件矩阵</a>
+              <a href="join.html">加入我们</a>
               <a href="about.html">关于本站</a>
               <a href="https://github.com/indiboy-create" target="_blank" rel="noopener">GitHub 主页</a>
               <a href="https://layui.dev/" target="_blank" rel="noopener">Layui 文档</a>

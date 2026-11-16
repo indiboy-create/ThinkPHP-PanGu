@@ -4,7 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>组件矩阵 · PanGu</title>
-    <meta name="description" content="按分类浏览 ThinkPHP 8 Composer 组件，支持搜索、分类筛选与排序。" />
+    <meta
+      name="description"
+      content="按能力分类浏览 51 个 ThinkPHP 8 Composer 组件，支持搜索、分类筛选与排序，附安装命令与仓库说明。"
+    />
+    <meta property="og:title" content="组件矩阵 · PanGu" />
+    <meta
+      property="og:description"
+      content="51 个 ThinkPHP 8 Composer 组件，按 8 类能力组织，支持搜索、筛选与排序。"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://indiboy-create.github.io/ThinkPHP-PanGu/packages.html" />
     <link rel="canonical" href="https://indiboy-create.github.io/ThinkPHP-PanGu/packages.html" />
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="component/layui/css/layui.css" />
@@ -12,7 +22,7 @@
   </head>
   <body data-page="packages">
     <header class="pg-header">
-      <div class="pg-container pg-header-inner">
+      <div class="layui-container pg-header-inner">
         <a class="pg-brand" href="index.html">
           <span class="pg-brand-mark"><i class="layui-icon layui-icon-engine"></i></span>
           <span>PanGu<small>THINKPHP MATRIX</small></span>
@@ -21,6 +31,7 @@
           <a href="index.html" data-page="home">首页</a>
           <a href="store.html" data-page="store">应用商店</a>
           <a href="packages.html" data-page="packages">组件矩阵</a>
+          <a href="join.html" data-page="join">加入我们</a>
           <a href="projects.html" data-page="projects">项目</a>
           <a href="about.html" data-page="about">关于</a>
         </nav>
@@ -37,24 +48,26 @@
 
     <main class="pg-main">
       <section class="pg-page-head">
-        <div class="pg-container">
-          <div class="pg-breadcrumb">
-            <a href="index.html">首页</a><i class="layui-icon layui-icon-right"></i><span>组件矩阵</span>
-          </div>
-          <h1 class="pg-page-title">50 个 ThinkPHP 8 Composer 组件</h1>
+        <div class="layui-container">
+          <span class="pg-hero-badge pg-fade">
+            <i class="layui-icon layui-icon-fire"></i>
+            ThinkPHP 8 工程矩阵 · 51 个组件 · 8 类能力
+          </span>
+          <h1 class="pg-page-title">51 个 ThinkPHP 8 <em>Composer 组件</em></h1>
           <p class="pg-page-desc">
-            全部组件均以 youvision/think-* 包名发布，通过 composer require 引入。可以按能力分类筛选，
-            也可以直接搜索包名、中文名或标签。
+            全部组件以 youvision/think-* 发布，composer require
+            即可引入。按能力筛选，也可以直接搜包名、中文名或标签。
           </p>
         </div>
       </section>
 
       <section class="pg-section is-tight">
-        <div class="pg-container">
-          <div class="pg-toolbar">
+        <div class="layui-container">
+          <div class="pg-toolbar layui-form">
             <div class="pg-search">
               <i class="layui-icon layui-icon-search"></i>
               <input
+                class="layui-input"
                 id="pkg-search-input"
                 type="search"
                 placeholder="搜索包名、中文名或标签"
@@ -64,34 +77,34 @@
             <div class="pg-chips" id="pkg-chips"></div>
           </div>
 
-          <div class="pg-result-meta" id="pkg-result-meta"></div>
-          <div class="pg-pkg-list" id="pkg-grid"></div>
+          <div class="pg-result-meta layui-form" id="pkg-result-meta"></div>
+          <div class="layui-row layui-col-space16" id="pkg-grid"></div>
           <div class="pg-empty" id="pkg-empty" style="display: none">
             <i class="layui-icon layui-icon-search"></i>
             <h3>没有匹配的组件</h3>
-            <p>换一个关键词，或切换分类后再试。</p>
-            <a class="pg-btn pg-btn-outline" href="packages.html">重置筛选</a>
+            <p>换个关键词，或清除分类筛选再试。</p>
+            <a class="layui-btn-primary layui-btn pg-btn pg-btn-outline" href="packages.html">重置筛选</a>
           </div>
           <div class="pg-pagination" id="pkg-pager"></div>
         </div>
       </section>
 
       <section class="pg-section is-tight">
-        <div class="pg-container">
+        <div class="layui-container">
           <div class="pg-cta">
             <div class="pg-cta-text">
               <h2>找不到需要的能力？</h2>
-              <p>组件矩阵持续扩展。可以在 GitHub 上查看仓库说明、提交 Issue，或直接组合多个组件完成业务。</p>
+              <p>先在矩阵里找相近的包；确实缺一块，也可以按 think-store 标准补一个。</p>
             </div>
             <div class="pg-cta-actions">
               <a
-                class="pg-btn pg-btn-primary"
+                class="layui-btn pg-btn pg-btn-primary"
                 href="https://github.com/indiboy-create"
                 target="_blank"
                 rel="noopener"
                 ><i class="layui-icon layui-icon-log"></i>GitHub</a
               >
-              <a class="pg-btn pg-btn-ghost" href="projects.html">看看完整项目</a>
+              <a class="layui-btn-primary layui-btn pg-btn pg-btn-ghost" href="projects.html">看看完整项目</a>
             </div>
           </div>
         </div>
@@ -99,7 +112,7 @@
     </main>
 
     <footer class="pg-footer">
-      <div class="pg-container">
+      <div class="layui-container">
         <div class="pg-footer-grid">
           <div>
             <a class="pg-brand" href="index.html">
@@ -124,7 +137,7 @@
             <h4>项目</h4>
             <div class="pg-footer-links">
               <a href="project.html?slug=think-store">think-store</a>
-              <a href="project.html?slug=think-static">think-static</a>
+              <a href="project.html?slug=think-store-chess">think-store-chess</a>
               <a href="project.html?slug=layuiadmin-iframe">LayuiAdmin-Iframe</a>
               <a href="project.html?slug=glide-server">glide-server</a>
               <a href="projects.html">全部项目</a>
@@ -134,6 +147,7 @@
             <h4>资源</h4>
             <div class="pg-footer-links">
               <a href="packages.html">组件矩阵</a>
+              <a href="join.html">加入我们</a>
               <a href="about.html">关于本站</a>
               <a href="https://github.com/indiboy-create" target="_blank" rel="noopener">GitHub 主页</a>
               <a href="https://layui.dev/" target="_blank" rel="noopener">Layui 文档</a>

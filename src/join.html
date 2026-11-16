@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>加入我们 · PanGu</title>
+    <meta
+      name="description"
+      content="按 think-store 标准开发 think-store-xxx 发布包，把 ThinkPHP 的零散能力拼成一套可安装、可复用、可演进的工程体系。"
+    />
+    <meta property="og:title" content="加入我们 · PanGu" />
+    <meta
+      property="og:description"
+      content="一个包，一个能力；一次安装，一个可运行的站点。和 PanGu 一起把 ThinkPHP 的工程约定补齐。"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://indiboy-create.github.io/ThinkPHP-PanGu/join.html" />
+    <link rel="canonical" href="https://indiboy-create.github.io/ThinkPHP-PanGu/join.html" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="component/layui/css/layui.css" />
+    <link rel="stylesheet" href="static/css/site.css" />
+  </head>
+  <body data-page="join">
+    <header class="pg-header">
+      <div class="layui-container pg-header-inner">
+        <a class="pg-brand" href="index.html">
+          <span class="pg-brand-mark"><i class="layui-icon layui-icon-engine"></i></span>
+          <span>PanGu<small>THINKPHP MATRIX</small></span>
+        </a>
+        <nav class="pg-nav">
+          <a href="index.html" data-page="home">首页</a>
+          <a href="store.html" data-page="store">应用商店</a>
+          <a href="packages.html" data-page="packages">组件矩阵</a>
+          <a href="join.html" data-page="join">加入我们</a>
+          <a href="projects.html" data-page="projects">项目</a>
+          <a href="about.html" data-page="about">关于</a>
+        </nav>
+        <div class="pg-header-actions">
+          <a class="pg-github-link" href="https://github.com/indiboy-create" target="_blank" rel="noopener">
+            <i class="layui-icon layui-icon-log"></i><span>GitHub</span>
+          </a>
+        </div>
+        <button class="pg-nav-toggle" type="button" aria-label="打开导航">
+          <i class="layui-icon layui-icon-spread-left"></i>
+        </button>
+      </div>
+    </header>
+
+    <main class="pg-main">
+      <section class="pg-page-head">
+        <div class="layui-container">
+          <span class="pg-hero-badge pg-fade">
+            <i class="layui-icon layui-icon-fire"></i>
+            ThinkPHP 8 工程矩阵 · 51 个组件 · 8 类能力
+          </span>
+          <h1 class="pg-page-title">一起把 ThinkPHP 的<em>工程地基</em>，重新丈量一遍</h1>
+          <p class="pg-page-desc">
+            按 think-store 的标准，做一个能装、能跑、能读懂的
+            think-store-xxx。我们不缺另一个框架，缺的是把发布、部署与文档约定补齐的人。
+          </p>
+          <div class="pg-hero-actions" style="margin-top: 26px">
+            <a
+              class="layui-btn pg-btn pg-btn-primary"
+              href="https://github.com/indiboy-create"
+              target="_blank"
+              rel="noopener"
+              ><i class="layui-icon layui-icon-log"></i>从 GitHub 开始</a
+            >
+            <a class="layui-btn-primary layui-btn pg-btn pg-btn-ghost" href="packages.html">先看看组件矩阵</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="pg-section is-tight">
+        <div class="layui-container">
+          <div class="pg-section-head">
+            <div>
+              <div class="pg-eyebrow">Why PanGu</div>
+              <h2 class="pg-section-title">为什么叫 PanGu</h2>
+              <p class="pg-section-desc">盘古不是一个人名，而是一个动作：把混沌劈开，让天地各归其位。</p>
+            </div>
+          </div>
+          <div class="pg-flow pg-flow--three pg-flow--light">
+            <div class="pg-flow-step">
+              <h4>混沌</h4>
+              <p>
+                早年的 ThinkPHP
+                生态里，包各自为政：命名各写各的，装完还要手工搬资源，版本与配置随缘，同一个后台列表页被反复重写。
+              </p>
+              <code>composer require ... 然后呢？</code>
+            </div>
+            <div class="pg-flow-step">
+              <h4>开天</h4>
+              <p>
+                think-store 把“一个能力 =
+                一个可安装的包”写成约定：视图、静态资源、路由、配置与入口声明各归其位，装完即注册，商店可发现、可同步。
+              </p>
+              <code>think-store-xxx</code>
+            </div>
+            <div class="pg-flow-step">
+              <h4>立地</h4>
+              <p>
+                当越来越多的 think-store-xxx 各就各位，ThinkPHP
+                项目不再从零搭积木，而是从一套可组合的工程地基上起楼。
+              </p>
+              <code>一个包，一颗星</code>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="pg-section is-tight">
+        <div class="layui-container">
+          <div class="pg-section-head">
+            <div>
+              <div class="pg-eyebrow">Before</div>
+              <h2 class="pg-section-title">那些年，Composer 包留给我们的坑</h2>
+              <p class="pg-section-desc">
+                Composer 解决了“依赖怎么装”，却没有回答“装完之后怎么活”。下面这些坑，几乎每个 ThinkPHP
+                项目都踩过。
+              </p>
+            </div>
+          </div>
+          <div class="layui-row layui-col-space20">
+            <div class="layui-col-md4">
+              <div class="layui-card pg-card">
+                <div class="pg-card-icon"><i class="layui-icon layui-icon-file"></i></div>
+                <h3 class="pg-card-title">装完还要搬资源</h3>
+                <p class="pg-card-text">
+                  包里有 JS、CSS 和模板，却要手动拷到 public；升级一次忘一次，线上样式和包版本永远对不上。
+                </p>
+              </div>
+            </div>
+            <div class="layui-col-md4">
+              <div class="layui-card pg-card">
+                <div class="pg-card-icon"><i class="layui-icon layui-icon-set"></i></div>
+                <h3 class="pg-card-title">配置各写各的</h3>
+                <p class="pg-card-text">
+                  有的读 config，有的拿 env，有的藏在构造函数里；换一个项目，就要重新猜一遍用法。
+                </p>
+              </div>
+            </div>
+            <div class="layui-col-md4">
+              <div class="layui-card pg-card">
+                <div class="pg-card-icon"><i class="layui-icon layui-icon-link"></i></div>
+                <h3 class="pg-card-title">路由与入口失踪</h3>
+                <p class="pg-card-text">
+                  包装好了，页面却不知道从哪里进；路由要不要复制、前缀是多少，全凭 README 的良心。
+                </p>
+              </div>
+            </div>
+            <div class="layui-col-md4">
+              <div class="layui-card pg-card">
+                <div class="pg-card-icon"><i class="layui-icon layui-icon-templeate-1"></i></div>
+                <h3 class="pg-card-title">后台页面重复造</h3>
+                <p class="pg-card-text">
+                  同一套列表、表单与弹层，在每个项目里复制、改名、再复制，重复劳动堆成了技术债。
+                </p>
+              </div>
+            </div>
+            <div class="layui-col-md4">
+              <div class="layui-card pg-card">
+                <div class="pg-card-icon"><i class="layui-icon layui-icon-release"></i></div>
+                <h3 class="pg-card-title">发布不可复现</h3>
+                <p class="pg-card-text">
+                  包里带部署脚本、隐藏目录和构建产物，别人装出来的样子，和你本地跑出来的不一定是同一个东西。
+                </p>
+              </div>
+            </div>
+            <div class="layui-col-md4">
+              <div class="layui-card pg-card">
+                <div class="pg-card-icon"><i class="layui-icon layui-icon-component"></i></div>
+                <h3 class="pg-card-title">能力无法被复用</h3>
+                <p class="pg-card-text">
+                  好用的能力被锁死在单个项目里，换一个项目又要重写。生态没有沉淀，只有无穷的复制粘贴。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="pg-section is-tight">
+        <div class="layui-container">
+          <div class="pg-section-head">
+            <div>
+              <div class="pg-eyebrow">Standard</div>
+              <h2 class="pg-section-title">现在：一套能落地的 think-store 标准</h2>
+              <p class="pg-section-desc">
+                think-store-xxx 不是换个名字，而是一份可检查、可安装、可被商店发现的工程契约。
+              </p>
+            </div>
+            <a class="pg-section-link" href="store.html"
+              >理解商店体系 <i class="layui-icon layui-icon-right"></i
+            ></a>
+          </div>
+          <div class="layui-row layui-col-space20">
+            <div class="layui-col-md6">
+              <div class="layui-card pg-card">
+                <div class="pg-card-icon"><i class="layui-icon layui-icon-component"></i></div>
+                <h3 class="pg-card-title">一个包，一个能力</h3>
+                <p class="pg-card-text">
+                  包名即边界：think-store-xxx 只解决一个明确问题，可被单独安装、单独升级，也可被组合使用。
+                </p>
+              </div>
+            </div>
+            <div class="layui-col-md6">
+              <div class="layui-card pg-card">
+                <div class="pg-card-icon"><i class="layui-icon layui-icon-template-1"></i></div>
+                <h3 class="pg-card-title">包内视图与资源</h3>
+                <p class="pg-card-text">
+                  模板放 theme/view，静态资源放 theme/assets，由包内路由输出；主项目不需要复制任何文件到
+                  public。
+                </p>
+              </div>
+            </div>
+            <div class="layui-col-md6">
+              <div class="layui-card pg-card">
+                <div class="pg-card-icon"><i class="layui-icon layui-icon-link"></i></div>
+                <h3 class="pg-card-title">服务注册与路由</h3>
+                <p class="pg-card-text">
+                  Service 在 boot() 阶段加载路由，配置通过 vendor:publish 发布，前缀与开关集中在一个 config
+                  文件里。
+                </p>
+              </div>
+            </div>
+            <div class="layui-col-md6">
+              <div class="layui-card pg-card">
+                <div class="pg-card-icon"><i class="layui-icon layui-icon-cart"></i></div>
+                <h3 class="pg-card-title">商店入口声明</h3>
+                <p class="pg-card-text">
+                  在 composer.json 的 extra.store.home 声明首页地址，think-store
+                  就能识别它、访问它、在管理页里同步它。
+                </p>
+              </div>
+            </div>
+            <div class="layui-col-md6">
+              <div class="layui-card pg-card">
+                <div class="pg-card-icon"><i class="layui-icon layui-icon-upload"></i></div>
+                <h3 class="pg-card-title">可复现的部署</h3>
+                <p class="pg-card-text">
+                  用 project.json 描述部署映射，由 think-store 按约定同步；安装结果与仓库内容一致。
+                </p>
+              </div>
+            </div>
+            <div class="layui-col-md6">
+              <div class="layui-card pg-card">
+                <div class="pg-card-icon"><i class="layui-icon layui-icon-read"></i></div>
+                <h3 class="pg-card-title">文档与测试是交付物</h3>
+                <p class="pg-card-text">
+                  README 写清安装、配置、路由与边界；测试覆盖核心路径。没有说明的能力，不进入组件矩阵。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="pg-section is-tight">
+        <div class="layui-container">
+          <div class="pg-section-head">
+            <div>
+              <div class="pg-eyebrow">Shape</div>
+              <h2 class="pg-section-title">一个标准包，大致长这样</h2>
+              <p class="pg-section-desc">目录不复杂，难的是每一项都各归其位，并且经得起安装与升级。</p>
+            </div>
+          </div>
+          <div class="layui-panel pg-panel">
+            <h2 class="pg-panel-title"><i class="layui-icon layui-icon-file"></i>think-store-xxx</h2>
+            <pre class="pg-code">
+think-store-xxx/
+├─ composer.json      # 包名、依赖与 extra.store.home 入口声明
+├─ config/xxx.php     # 路由前缀、开关与业务配置
+├─ route/             # 由 Service 在 boot() 阶段加载
+├─ src/               # Service、Controller、Model 与支撑类
+└─ theme/             # view 模板 + assets 静态资源</pre>
+            <div class="pg-prose" style="margin-top: 16px">
+              <p>
+                这套结构已经在示例、编辑器、象棋与天气四个发布包中跑通。你要做的不是发明新约定，而是把约定执行到位。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="pg-section is-tight" id="how-to-join">
+        <div class="layui-container">
+          <div class="pg-section-head">
+            <div>
+              <div class="pg-eyebrow">How to Join</div>
+              <h2 class="pg-section-title">三步，把想法变成<em>可安装的包</em></h2>
+              <p class="pg-section-desc">
+                不用等邀请，也不用先证明什么。先做一个能装、能跑、能读懂的包，再让它被商店发现。
+              </p>
+            </div>
+          </div>
+          <div class="pg-flow pg-flow--three pg-flow--light">
+            <div class="pg-flow-step">
+              <h4>挑一个真实的麻烦</h4>
+              <p>从组件矩阵的空白处找：一张后台页面、一条集成链路、一种重复劳动。问题越具体，包越站得住。</p>
+              <code>它替谁省掉了什么？</code>
+            </div>
+            <div class="pg-flow-step">
+              <h4>按约定装进包里</h4>
+              <p>
+                视图进 theme，路由交给 Service，配置集中到一个文件，入口写进 composer.json。安装后即可运行。
+              </p>
+              <code>composer require youvision/think-store-xxx</code>
+            </div>
+            <div class="pg-flow-step">
+              <h4>开源，然后被看见</h4>
+              <p>
+                在 GitHub 开源，写清安装、配置、路由与边界，再让组件矩阵收录。能力流动起来，生态才开始生长。
+              </p>
+              <code>Pull Request / Issue</code>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="pg-section is-tight">
+        <div class="layui-container">
+          <div class="pg-section-head">
+            <div>
+              <div class="pg-eyebrow">Who</div>
+              <h2 class="pg-section-title">我们在找这样的你</h2>
+              <p class="pg-section-desc">不需要头衔，只看你愿不愿意把一件事做完整。</p>
+            </div>
+          </div>
+          <div class="layui-row layui-col-space20">
+            <div class="layui-col-md4">
+              <div class="layui-card pg-about-card">
+                <i class="layui-icon layui-icon-file"></i>
+                <h3>愿意写文档的人</h3>
+                <p>知道 README 不是附属品，而是包的一部分；愿意把安装、配置、路由与边界写清楚。</p>
+              </div>
+            </div>
+            <div class="layui-col-md4">
+              <div class="layui-card pg-about-card">
+                <i class="layui-icon layui-icon-component"></i>
+                <h3>愿意把包当产品的人</h3>
+                <p>不满足于"能跑"，还在意命名、目录、升级路径与别人装完后的第一眼体验。</p>
+              </div>
+            </div>
+            <div class="layui-col-md4">
+              <div class="layui-card pg-about-card">
+                <i class="layui-icon layui-icon-time"></i>
+                <h3>愿意长期维护的人</h3>
+                <p>接受版本会变、依赖会老，愿意为兼容与迁移留出余地，而不是发布一次就消失。</p>
+              </div>
+            </div>
+            <div class="layui-col-md4">
+              <div class="layui-card pg-about-card">
+                <i class="layui-icon layui-icon-set"></i>
+                <h3>熟悉 PHP 8 与 Layui 的人</h3>
+                <p>能用 ThinkPHP 8 写服务与路由，也能用 Layui 把后台页面做得干净、克制、好用。</p>
+              </div>
+            </div>
+            <div class="layui-col-md4">
+              <div class="layui-card pg-about-card">
+                <i class="layui-icon layui-icon-ok-circle"></i>
+                <h3>愿意先装一遍的人</h3>
+                <p>发布前把包装进真实项目，验证安装、路由、静态资源与升级路径，而不是只交一份能跑的代码。</p>
+              </div>
+            </div>
+            <div class="layui-col-md4">
+              <div class="layui-card pg-about-card">
+                <i class="layui-icon layui-icon-dialogue"></i>
+                <h3>愿意接受不同意见的人</h3>
+                <p>命名、目录与边界都可以被讨论；愿意按统一约定迭代，而不是把包当成个人作品。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="pg-section is-tight">
+        <div class="layui-container">
+          <div class="pg-cta">
+            <div class="pg-cta-text">
+              <h2>盘古开天，不是一个人劈完的</h2>
+              <p>
+                把 ThinkPHP
+                之上的工程约定补齐：一个包一个能力，一次安装一个站点，一套标准一条发布链路。如果你也相信这件事值得做，就从第一个
+                think-store-xxx 开始。
+              </p>
+            </div>
+            <div class="pg-cta-actions">
+              <a
+                class="layui-btn pg-btn pg-btn-primary"
+                href="https://github.com/indiboy-create"
+                target="_blank"
+                rel="noopener"
+                ><i class="layui-icon layui-icon-log"></i>加入 GitHub</a
+              >
+              <a
+                class="layui-btn-primary layui-btn pg-btn pg-btn-ghost"
+                href="https://github.com/indiboy-create/think-store"
+                target="_blank"
+                rel="noopener"
+                >研究 think-store</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="pg-footer">
+      <div class="layui-container">
+        <div class="pg-footer-grid">
+          <div>
+            <a class="pg-brand" href="index.html">
+              <span class="pg-brand-mark"><i class="layui-icon layui-icon-engine"></i></span>
+              <span>PanGu<small>THINKPHP MATRIX</small></span>
+            </a>
+            <p class="pg-footer-desc">
+              面向 ThinkPHP 8 的开源工程索引：组件、框架、服务与发布工具，按能力组织，持续整理。
+            </p>
+          </div>
+          <div>
+            <h4>组件分类</h4>
+            <div class="pg-footer-links">
+              <a href="packages.html?group=foundation">基础架构</a>
+              <a href="packages.html?group=security">安全认证</a>
+              <a href="packages.html?group=data">数据处理</a>
+              <a href="packages.html?group=media">媒体文件</a>
+              <a href="packages.html?group=integration">开放集成</a>
+            </div>
+          </div>
+          <div>
+            <h4>项目</h4>
+            <div class="pg-footer-links">
+              <a href="project.html?slug=think-store">think-store</a>
+              <a href="project.html?slug=think-store-chess">think-store-chess</a>
+              <a href="project.html?slug=layuiadmin-iframe">LayuiAdmin-Iframe</a>
+              <a href="project.html?slug=glide-server">glide-server</a>
+              <a href="projects.html">全部项目</a>
+            </div>
+          </div>
+          <div>
+            <h4>资源</h4>
+            <div class="pg-footer-links">
+              <a href="packages.html">组件矩阵</a>
+              <a href="join.html">加入我们</a>
+              <a href="about.html">关于本站</a>
+              <a href="https://github.com/indiboy-create" target="_blank" rel="noopener">GitHub 主页</a>
+              <a href="https://layui.dev/" target="_blank" rel="noopener">Layui 文档</a>
+              <a href="https://www.thinkphp.cn/" target="_blank" rel="noopener">ThinkPHP 官网</a>
+            </div>
+          </div>
+        </div>
+        <div class="pg-footer-bottom">
+          <span>© <span id="pg-year">2026</span> PanGu · ThinkPHP 工程矩阵</span>
+          <span>Built with Layui 2.13.9 · 纯静态部署</span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="component/layui/layui.js"></script>
+    <script src="static/js/data.js"></script>
+    <script src="static/js/site.js"></script>
+  </body>
+</html>

@@ -4,11 +4,12 @@
 
 一个纯静态的项目介绍站，用于收录并介绍 [indiboy-create](https://github.com/indiboy-create) 的 ThinkPHP 生态项目：
 
-- **think-* Composer 组件**：50 个面向 ThinkPHP 8 的能力包
+- **think-* Composer 组件**：51 个面向 ThinkPHP 8 的能力包
 - **LayuiAdmin-Iframe**：基于 Layui 的 iframe 后台前端模板
 - **glide-server**：URL 参数驱动的独立缩略图服务
-- **应用商店套件**：think-store、think-store-example、think-store-codeditor
-- **think-static**：Composer 自动部署静态资源的插件
+- **应用商店套件**：think-store 与 think-store-example、think-store-codeditor、think-store-chess、think-store-weather
+
+- **think-apidoc-ui**：基于 Layui 重写的 ApiDoc 前端文档界面
 - **探索项目**：tpcms-sites 站群系统、xiaozhi-music MCP 音乐服务
 
 站点产物不依赖 PHP、数据库或服务端渲染，最终输出为 `dist/` 下的静态文件，发布到 GitHub Pages。
@@ -46,6 +47,7 @@
 │  ├─ store.html             # 应用商店（发布链路、商店套件、商店组件与接口）
 │  ├─ packages.html          # 组件矩阵（搜索、分类筛选、排序、分页）
 │  ├─ package.html           # 组件详情（?name=think-jwt）
+│  ├─ join.html              # 加入我们：PanGu 由来、think-store-xxx 标准与招募说明
 │  ├─ projects.html          # 项目列表
 │  ├─ project.html           # 项目详情（?slug=think-store）
 │  ├─ about.html             # 关于本站
@@ -89,7 +91,7 @@ npm install
 npm run dev
 ```
 
-Vite 以 `src/` 为根目录，默认地址 `http://127.0.0.1:8080/`，修改 HTML/CSS/JS 后自动刷新。
+Vite 以 `src/` 为根目录，默认地址 `http://127.0.0.1:9999/`（`strictPort` 固定端口），修改 HTML/CSS/JS 后自动刷新。
 
 ## 构建与预览
 
@@ -103,7 +105,7 @@ npm run preview   # 预览 dist 构建产物
 - `src` 整体拷贝到 `dist`，每次构建前清空旧产物
 - `component/layui/` 为第三方目录，不压缩、不修改
 - 业务 JS 使用 Terser 压缩，CSS 使用 CleanCSS（level 2）
-- 自动生成 `dist/sitemap.xml`（62 个地址）与 `dist/.nojekyll`
+- 自动生成 `dist/sitemap.xml`（67 个地址）与 `dist/.nojekyll`
 
 ## 校验与规范
 
@@ -248,6 +250,7 @@ npm run check
 | `store.html` | 应用商店：商店套件概览、发布链路四步、商店组件与发布包接口清单 |
 | `packages.html` | 组件矩阵：关键词搜索、分类筛选、名称/分类排序、每页 12 条分页 |
 | `package.html` | 组件详情：安装命令、核心能力、标签、同分类推荐、GitHub 链接 |
+| `join.html` | 加入我们：PanGu 命名由来、旧 Composer 包的痛点、think-store-xxx 标准与参与方式 |
 | `projects.html` | 项目列表：应用商店套件与独立项目分组 |
 | `project.html` | 项目详情：定位、特性、安装启动、接口表、技术栈与相关项目 |
 | `about.html` | 站点结构、整理原则与技术栈说明 |
@@ -255,6 +258,7 @@ npm run check
 ## 说明
 
 - 组件信息优先取自各仓库 README 与 `composer.json`，接口、配置项以源仓库为准。
-- 只有名称、没有实质说明的仓库（如 think-auth、think-firewall 等）未收录为成熟组件，避免夸大能力。
+- 只有名称、没有实质说明的仓库（如 think-firewall、think-uploader 等）未收录为成熟组件，避免夸大能力。
 - `think-sms` 的 Composer 包名为 `youvision/think-easysms`，页面中已显式标注。
-- Layui 静态资源位于 `src/component/layui`，版本为 2.13.9，构建时原样复制到 `dist`。
+
+- Layui 静态资源位于 `src/component/layui`，版本为 2.13.9，构建时原样复制到 `dist`。- 页面优先复用 Layui 组件：`layui-container`、`layui-row/layui-col`、`layui-card`、`layui-btn`、`layui-badge`、`layui-form`、`layui-table`、`layui-panel`；`site.css` 只保留主题变量、品牌配色与必要的组件覆盖。

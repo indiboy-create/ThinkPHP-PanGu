@@ -7,7 +7,8 @@ export default defineConfig({
   root: 'src',
   base: './',
   server: {
-    port: 8080,
+    port: 9999,
+    strictPort: true,
     open: false,
   },
   build: {
